@@ -1,24 +1,36 @@
-# README
+# GAME_ECsite
+--------------------------------
+## サイト概要
+--------------------------------
+### サイトテーマ
+ジャンルや値段から好みのゲームを探して、レビューを参考に購入することができるECサイト
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### テーマを選んだ理由
+元々ゲームが好きでいろんなゲームを探し求めているのですが、現代のゲームは複雑化していて好みのゲームを探すのに苦労していました。
+なので、好きなジャンルでゲームがソートできるECサイトがあれば便利だと考えました。
+更に、実際に遊んだ人のレビューが確認できれば、より自分に合ったものを選べる思ったのでこのテーマにしました。
 
-Things you may want to cover:
+### ターゲットユーザ
+・ゲームが好きで、自分の好きなジャンルを探している人
+・普段やらないようなジャンルのゲームを遊んでみたい人
+・レビューを参考に自分により合ったゲームを探したい人
 
-* Ruby version
+### 主な利用シーン
+・好きなゲームを探したい時
+・実際に遊んだ人の感想を知りたい時
 
-* System dependencies
+## 設計書
+-------------------------------
+後ほど作成
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 開発環境
+-------------------------------
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+- 
+## 使用素材
+-------------------------------
+後ほど記載

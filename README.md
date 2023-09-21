@@ -33,3 +33,7 @@
 ## 使用素材
 -------------------------------
 後ほど記載
+
+## 実装機能リスト
+-------------------------------
+https://docs.google.com/spreadsheets/d/1l3QXnqx2_fRDcwYEWSlmd4uozKKx_ABDuOJdVv9IGJ8/edit?usp=sharing

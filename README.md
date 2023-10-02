@@ -21,7 +21,7 @@
 
 ## 設計書
 -------------------------------
-後ほど作成
+https://docs.google.com/spreadsheets/d/1wwjW2mRI28OHQh9_Z-efm7zz8dy5SaiEFo-fT-6uvx8/edit?usp=sharing
 
 ## 開発環境
 -------------------------------

@@ -7,4 +7,5 @@ class Public::UsersController < ApplicationController
 
   def confirm
   end
+  
 end

@@ -22,39 +22,39 @@
             <% if request.fullpath.include? "/admin" %>
                 <!--admin側のheaderを返す-->
             <li>
-              <a class="nav-link text-light" href="/admin/items/">
+              <a class="nav-link text-light" rel="nofollow" data-method="delete" href="/admin/sign_out">
                 ログアウト
               </a>
             </li>
             <li>
-              <a class="nav-link text-light" href="/admin/customers/index">
+              <a class="nav-link text-light" href="/admin/users">
                 会員一覧
               </a>
             </li>
             <li>
-              <a class="nav-link text-light" href="/admin">
+              <a class="nav-link text-light" href="/admin/games">
                 ゲーム一覧
               </a>
             </li>
             <li>
-              <a class="nav-link text-light" rel="nofollow" data-method="delete" href="/admin/sign_out">
+              <a class="nav-link text-light" href="/admin/genres">
                 ジャンル一覧
               </a>
             </li>
             <% else %>
                 <!--user側のheaderを返す-->
             <li>
-              <a class="nav-link text-light" href="/about">
+              <a class="nav-link text-light" href="/users/sign_up">
                 新規登録
               </a>
             </li>
             <li>
-              <a class="nav-link text-light" href="/customers/sign_up">
+              <a class="nav-link text-light" href="/games">
                 ゲーム一覧
               </a>
             </li>
             <li>
-              <a class="nav-link text-light" href="/customers/sign_in">
+              <a class="nav-link text-light" href="/users/sign_in">
                 ログイン
               </a>
             </li>
@@ -62,39 +62,38 @@
           <% elsif user_signed_in? %>
               <!--userログイン状態の際に、表示したいheaderのメニューを記載-->
             <li>
-              <%= link_to mypage_customers_path(current_customer),class:"nav-link text-light" do %> <!--hrefでログインユーザーページを指定する方法がわからない-->
+              <a class="nav-link text-light" rel="nofollow" data-method="delete" href="/users/sign_out">
                 ログアウト                                    <!-- link to passの形に書き換えて解決。パスの後にclass指定することで、CSSを適応させることができる。-->
-              <% end %>
+              </a>
             </li>
             <li>
-              <a class="nav-link text-light" href="/items">
+              <%= link_to index_bookmark_path(current_user),class:"nav-link text-light" do %>
                 ブックマーク一覧
-              </a>
-            </li>
-            <li>
-              <%= link_to cart_items_path(current_customer),class:"nav-link text-light" do %> <!--hrefでログインユーザーページを指定する方法がわからない-->
-                ゲーム一覧                                    <!-- link to passの形に書き換えて解決。パスの後にclass指定することで、CSSを適応させることができる。-->
               <% end %>
             </li>
             <li>
-              <a class="nav-link text-light" rel="nofollow" data-method="delete" href="/customers/sign_out">
-                マイページ
+              <a class="nav-link text-light" href="/games">
+                ゲーム一覧                                    <!-- link to passの形に書き換えて解決。パスの後にclass指定することで、CSSを適応させることができる。-->
               </a>
             </li>
-            <% else %>
             <li>
-              <a class="nav-link text-light" href="/about">
+              <%= link_to mypage_users_path(current_user),class:"nav-link text-light" do %>
+                マイページ
+              <% end %>
+            </li>
+          <% else %>
+            <li>
+              <a class="nav-link text-light" href="/users/sign_up">
                 新規登録
               </a>
             </li>
             <li>
-              <a class="nav-link text-light" href="/items">
+              <a class="nav-link text-light" href="/games">
                 ゲーム一覧
               </a>
             </li>
-            </li>
             <li>
-              <a class="nav-link text-light" href="/customers/sign_in">
+              <a class="nav-link text-light" href="/users/sign_in">
                 ログイン
               </a>
             </li><!-- adminでもcustomerでもログインしていない時に表示するheaderのメニューを記載 -->

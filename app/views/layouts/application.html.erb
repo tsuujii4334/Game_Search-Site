@@ -23,7 +23,7 @@
                 <!--admin側のheaderを返す-->
             <li>
               <a class="nav-link text-light" href="/admin/items/">
-                商品一覧
+                ログアウト
               </a>
             </li>
             <li>
@@ -33,29 +33,24 @@
             </li>
             <li>
               <a class="nav-link text-light" href="/admin">
-                注文履歴一覧
+                ゲーム一覧
               </a>
             </li>
             <li>
               <a class="nav-link text-light" rel="nofollow" data-method="delete" href="/admin/sign_out">
-                ログアウト
+                ジャンル一覧
               </a>
             </li>
             <% else %>
                 <!--user側のheaderを返す-->
             <li>
               <a class="nav-link text-light" href="/about">
-                About
-              </a>
-            </li>
-            <li>
-              <a class="nav-link text-light" href="/items">
-                商品一覧
+                新規登録
               </a>
             </li>
             <li>
               <a class="nav-link text-light" href="/customers/sign_up">
-                新規登録
+                ゲーム一覧
               </a>
             </li>
             <li>
@@ -64,43 +59,39 @@
               </a>
             </li>
             <% end %>
-          <% elsif customer_signed_in? %>
-              <!--customerログイン状態の際に、表示したいheaderのメニューを記載-->
+          <% elsif user_signed_in? %>
+              <!--userログイン状態の際に、表示したいheaderのメニューを記載-->
             <li>
               <%= link_to mypage_customers_path(current_customer),class:"nav-link text-light" do %> <!--hrefでログインユーザーページを指定する方法がわからない-->
-                マイページ                                    <!-- link to passの形に書き換えて解決。パスの後にclass指定することで、CSSを適応させることができる。-->
+                ログアウト                                    <!-- link to passの形に書き換えて解決。パスの後にclass指定することで、CSSを適応させることができる。-->
               <% end %>
             </li>
             <li>
               <a class="nav-link text-light" href="/items">
-                商品一覧
+                ブックマーク一覧
               </a>
             </li>
             <li>
               <%= link_to cart_items_path(current_customer),class:"nav-link text-light" do %> <!--hrefでログインユーザーページを指定する方法がわからない-->
-                カート                                    <!-- link to passの形に書き換えて解決。パスの後にclass指定することで、CSSを適応させることができる。-->
+                ゲーム一覧                                    <!-- link to passの形に書き換えて解決。パスの後にclass指定することで、CSSを適応させることができる。-->
               <% end %>
             </li>
             <li>
               <a class="nav-link text-light" rel="nofollow" data-method="delete" href="/customers/sign_out">
-                ログアウト
+                マイページ
               </a>
             </li>
             <% else %>
             <li>
               <a class="nav-link text-light" href="/about">
-                About
+                新規登録
               </a>
             </li>
             <li>
               <a class="nav-link text-light" href="/items">
-                商品一覧
+                ゲーム一覧
               </a>
             </li>
-            <li>
-              <a class="nav-link text-light" href="/customers/sign_up">
-                新規登録
-              </a>
             </li>
             <li>
               <a class="nav-link text-light" href="/customers/sign_in">

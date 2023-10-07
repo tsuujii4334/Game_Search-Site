@@ -10,7 +10,7 @@ devise_for :users,skip: [:passwords], controllers: {
 devise_for :admin, skip: [:registrations, :passwords], controllers: {
   sessions: "admin/sessions"
 }
-  
+
   namespace :public do
     root to: 'homes#top'
     get 'user/:id/bookmarks' => 'bookmarks#index', as: 'index_bookmark'
@@ -19,7 +19,7 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
     delete 'reviews/:id' => 'reviews#destroy', as: 'destroy_review'
     post 'reviews/:review_id/comments' => 'comments#create', as: 'create_comment'
     delete 'comments/:id' => 'comments#destroy', as: 'destroy_comment'
-    get 'games/index' => 'games'
+    get 'games' => 'games#index'
     get 'games/:id' => 'games#show', as: 'show_game'
     get 'users/mypage' => 'users#show', as: 'mypage_user'
     get 'users/edit' => 'users#edit', as: 'edit_user'
@@ -30,15 +30,15 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
   end
 
   namespace :admin do
-    get 'games' => 'genres#index'
+    get 'genres' => 'genres#index'
     post 'genres/create' => 'genres'
     get 'genres/:id/edit' => 'genres#edit', as: 'edit_genre'
     patch 'genres/:id' => 'genres#update', ad: 'update_genre'
-    get 'users/index' => 'users'
+    get 'users' => 'users#index'
     get 'users/:id' => 'users#show', as: 'show_user'
     get 'users/:id/edit' => 'users#edit', as: 'edit_user'
     patch 'users/:id' => 'users#update', as: 'update_user'
-    get 'games/index' => 'games'
+    get 'games' => 'games#index'
     get 'games#new'
     post 'games' => 'games#create', as: 'create_game'
     get 'games/:id' => 'games#show', as: 'show_game'

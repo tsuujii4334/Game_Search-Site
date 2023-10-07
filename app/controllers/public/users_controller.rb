@@ -4,8 +4,16 @@ class Public::UsersController < ApplicationController
 
   def edit
   end
+  
+  def update
+    
+  end
 
   def confirm
+  end
+  
+  def withd
+    
   end
   
 end

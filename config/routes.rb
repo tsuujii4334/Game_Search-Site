@@ -36,7 +36,6 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
     patch 'genres/:id' => 'genres#update', as: 'update_genre'
     get 'users' => 'users#index'
     get 'users/:id' => 'users#show', as: 'show_user'
-    get 'users/:id/edit' => 'users#edit', as: 'edit_user'
     patch 'users/:id' => 'users#update', as: 'update_user'
     get 'games' => 'games#index'
     get 'games/new' => 'games#new'

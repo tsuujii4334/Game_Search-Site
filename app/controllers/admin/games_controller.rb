@@ -7,11 +7,31 @@ class Admin::GamesController < ApplicationController
   end
 
   def new
+    @games = Game.new
+    @genres = Genre.all
+  end
+  
+  def create
+    @game = Game.new(game_params)
   end
 
   def show
   end
 
   def edit
+    @games = Game.find(params[:id])
+    @genres = Genre.all
+  end
+  
+  def update
+    game = Game.find(params[:id])
+    game.update(game_params)
+    redirect_to admin_show_game_path(game.id)
+  end
+  
+  private
+  def game_params
+    params.require(:game).permit(:image,:name,:genre,:introduction,:price)
+    
   end
 end

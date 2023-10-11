@@ -1,2 +1,65 @@
-<h1>Admin::Games#edit</h1>
-<p>Find me in app/views/admin/games/edit.html.erb</p>
+<div class="container px-5">
+  <%= form_with model: @games, url: admin_update_game_path do |f| %>
+  <div class="row">
+    <div class="col-md-3">
+      <h3>ゲーム編集</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <p>ゲーム画像</p>
+    </div>
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.file_field :image, accept:"image/*" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <p>ゲームタイトル</p>
+    </div>
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.text_field :name, autofocus: true %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <p>ゲーム説明</p>
+    </div>
+    <div class="col-md-6">
+      <div class="field">
+        <%= f.text_field :introduction, autofocus: true %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <p>ジャンル</p>
+    </div>
+    <div class="col-md-6">
+      <div class="field">
+        <%= f.select :genre_id, @genres %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <p>価格</p>
+    </div>
+    <div class="col-md-6">
+      <div class="field">
+        <%= f.number_field :price, autofocus: true, autocomplete: "price" %>円
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+    </div>
+    <div class="col-md-4">
+      <%= f.submit "変更を保存", class:'btn btn-success' %>
+    </div>
+  <% end %>
+</div>

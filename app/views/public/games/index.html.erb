@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col">
      <span>ゲーム一覧</span><!--アイテムすべてをカウントする方法を質問する。-->
-    </div> 
+    </div>
   </div>
   <div class="row">
     <div class="col-md-4">
@@ -14,7 +14,7 @@
     <table>
       <tr>
         <td>
-          <%= link_to show_games_path(game.id) do %>
+          <%= link_to show_game_path(game.id) do %>
             <div><%= image_tag item.get_image(100,100) %></div>
             <div><%= game.name %></div>
           <% end %>

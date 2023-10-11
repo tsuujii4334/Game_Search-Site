@@ -1,2 +1,36 @@
-<h1>Admin::Games#index</h1>
-<p>Find me in app/views/admin/games/index.html.erb</p>
+<div class ="container px-4">
+  <div class="row">
+    <div class="col">
+     <span>ゲーム一覧</span>
+    </div> 
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+        <h4>絞り込み</h4><span>(該当数<%= @gamecount%>件)</span>
+      <p>金額</p>
+      <%= link_to admin_games_new_path do %>
+        <p>ゲーム新規登録</p>
+      <% end %>
+    </div>
+    <div class="col-md-8 scroll">
+    <% @games.each do |game| %>
+      <div class="row">
+        <div class="col-md-2">
+          <%= link_to admin_show_game_path(game.id) do %>
+            <div><%= image_tag item.get_image(100,100) %></div>
+          <% end %>
+        </div>
+        <div class="col-md-7">
+          <div><%= game.name %></div>
+          <div><%= game.genres.genre %></div>
+        </div>
+        <div class="col-md-3">
+          <div><%= game.created_at %></div>
+          <div><%= game.price %></div>
+        </div>
+      </div>
+    <% end %>
+    <%= paginate @games %>
+    </div>
+  </div>
+</div>

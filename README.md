@@ -33,7 +33,7 @@ https://docs.google.com/spreadsheets/d/1wwjW2mRI28OHQh9_Z-efm7zz8dy5SaiEFo-fT-6u
 -
 ## 使用素材
 -------------------------------
-後ほど記載
+- いらすとや https://www.irasutoya.com/
 
 ## 実装機能リスト
 -------------------------------

@@ -31,7 +31,7 @@ class Admin::GamesController < ApplicationController
   
   private
   def game_params
-    params.require(:game).permit(:image,:name,:genre,:introduction,:price)
+    params.require(:game).permit(:image,:name,:genre_name,:introduction,:price)
     
   end
 end

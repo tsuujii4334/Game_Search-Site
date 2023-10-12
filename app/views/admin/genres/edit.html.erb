@@ -1,2 +1,16 @@
-<h1>Admin::Genres#edit</h1>
-<p>Find me in app/views/admin/genres/edit.html.erb</p>
+<div class ="container px-4">
+  <div class="row">
+    <div class="col">
+     <h3>ジャンル編集</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+    <%= form_with model: @genres, url: admin_genres_update_path do |f| %>
+      <span>ジャンル名</span>
+      <%= f.text_field :genre_name, autofocus: true %>
+      <%= f.submit "変更を保存", class:'btn btn-success' %>
+    <% end %>
+    </div>
+  </div>
+</div>

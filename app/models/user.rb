@@ -18,7 +18,7 @@ class User < ApplicationRecord
     avatar
   end
 
-  def active_for_authentication?#退会したユーザー(退会ステータスが退会の状態)が再度ログインできないようなルールを設定
-    super && (is_deleted == false)
-  end
+  # def active_for_authentication?#退会したユーザー(退会ステータスが退会の状態)が再度ログインできないようなルールを設定
+  #   super && (is_deleted == false)
+  # end
 end

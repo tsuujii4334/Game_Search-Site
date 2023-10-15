@@ -1,15 +1,21 @@
 Rails.application.routes.draw do
 # ユーザー用
 # URL /user/sign_in ...
-devise_for :users,skip: [:passwords], controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-}
+devise_for :users,skip: :all
+devise_scope :user do
+  get 'users/sign_up' => 'devise/registrations#new', as: :new_user_registration
+  post 'users/sign_up' => 'divise/registrations#create', as: :user_registration
+  get 'users/sign_in' => 'devise/sessions#new', as: :new_user_session
+  delete 'users/logout' => 'devise/sessions#destroy', as: :destroy_user_session
+end
 # 管理者用
 # URL /admin/sign_in ...
-devise_for :admin, skip: [:registrations, :passwords], controllers: {
-  sessions: "admin/sessions"
-}
+devise_for :admin, skip: :all
+devise_scope :admin do
+  get 'admin/sign_in' => 'devise/sessions#new', as: :new_admin_session
+  post 'admin/sign_in' => 'devise/sessions#create', as: :admin_session
+  delete 'admin/logout' => 'devise/sessions#destroy', as: :destroy_admin_session
+end
 
   scope module: :public do
     root to: 'homes#top'
@@ -17,7 +23,7 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
     get 'reviews/:id' => 'reviews#show', as: 'show_review'
     post 'games/:game_id/reviews' => 'reviews#create', as: 'create_review'
     delete 'reviews/:id' => 'reviews#destroy', as: 'destroy_review'
-    post 'reviews/:review_id/comments' => 'comments#create', as: 'create_comment'
+    post 'reviews/:review_id/comments' => 'comments#create', as: 'create_commnt'
     delete 'comments/:id' => 'comments#destroy', as: 'destroy_comment'
     get 'games' => 'games#index'
     get 'games/:id' => 'games#show', as: 'show_game'

@@ -7,7 +7,7 @@ class Admin::GamesController < ApplicationController
   end
 
   def new
-    @games = Game.new
+    @game = Game.new
     @genres = Genre.all
   end
   

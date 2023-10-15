@@ -1,2 +1,47 @@
-<h1>Public::Users#edit</h1>
-<p>Find me in app/views/public/users/edit.html.erb</p>
+<div class="contaier">
+ <div class="row">
+  <div class="col-md-4 offset-md-1">
+    <h2>
+      ユーザー情報編集
+    </h2>
+      <table class="table table-hover table-inverse">
+        <%= form_with model: @user, url: update_user_path do |f| %>
+        <tr>
+          <th>プロフィール画像</th>
+          <td>
+            <%= f.file_field :avatar, accept:"image/*" %>
+          </td>
+        </tr>
+        <tr>
+          <th>名前(ニックネーム)</th>
+          <td><%= f.text_field :name, autofocus: true %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+        </tr>
+        <tr>
+          <td>
+            <%= f.submit "編集内容を保存", class:'btn btn-success' %>
+          </td>
+          <td>
+            <%= link_to users_confirm_path,class:"nav-link text-black" do %>
+              退会する
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-md-3">
+      <div>
+        <h4>
+          プロフィール画像
+        </h4>
+        <div>
+          <%= @user.avatar %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

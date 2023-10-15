@@ -25,9 +25,7 @@
             <%= f.submit "編集内容を保存", class:'btn btn-success' %>
           </td>
           <td>
-            <%= link_to users_confirm_path,class:"nav-link text-black" do %>
-              退会する
-            <% end %>
+            <%= link_to "退会する", users_confirm_path, :class => "btn btn-danger ms-3" %>
           </td>
         </tr>
         <% end %>

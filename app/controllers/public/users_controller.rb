@@ -16,11 +16,15 @@ class Public::UsersController < ApplicationController
   def confirm
   end
   
-  def withd
-    
+  def withdrawal
+    @user = User.find(current_user.id)
+    @user.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました。"
+    redirect_to root_path
   end
   
-  def item_params
+  def user_params
     params.require(:user).permit(:avatar, :name, :email)
   end
   

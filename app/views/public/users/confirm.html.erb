@@ -1,2 +1,24 @@
-<h1>Public::Users#confirm</h1>
-<p>Find me in app/views/public/users/confirm.html.erb</p>
+<div class="contaier px-5,py-10">
+  <div class="row">
+    <div class="col">
+      <h3>本当に退会しますか？</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p>
+        退会すると、あなたの会員登録情報やブックマーク、</br>
+        書き込んだレビューやコメントは閲覧できなくなります。</br>
+        退会する場合は、「退会する」をクリックしてください。
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= link_to "退会しない", mypage_user_path, :class => "btn btn-primary ms-3" %>
+    </div>
+    <div class="col-md-6">
+      <%= link_to "退会する", users_withdrawal_path, method: :patch, :class => "btn btn-danger ms-3", data: { confirm: "本当に退会しますか？" } %>
+    </div>
+  </div>
+</div>

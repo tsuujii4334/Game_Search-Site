@@ -15,14 +15,10 @@
         </tr>
         <tr>
           <td>
-            <%= link_to edit_user_path,class:"nav-link text-black" do %>
-              編集する
-            <% end %>
+            <%= link_to "編集する", edit_user_path , :class => "btn btn-success ms-3" %>
           </td>
           <td>
-            <%= link_to index_bookmark_path(@user.id),class:"nav-link text-black" do %>
-              ブックマーク一覧へ
-            <% end %>
+            <%= link_to "ブックマーク一覧へ", index_bookmark_path(@user.id), :class => "btn btn-primary ms-3" %>
           </td>
         </tr>
       </table>

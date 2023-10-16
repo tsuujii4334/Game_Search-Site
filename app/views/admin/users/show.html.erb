@@ -24,11 +24,11 @@
           <td>
             <span>
             <%= f.radio_button :@user, :is_deleted %>
-            <%= f.label :is_deleted, "登録中" %>  
+            <%= f.label :is_deleted, "登録中" %>
             </span>
             <span>
             <%= f.radio_button :@user, :is_deleted %>
-            <%= f.label :is_deleted, "退会" %>  
+            <%= f.label :is_deleted, "退会" %>
             </span>
           </td>
         </tr>
@@ -47,7 +47,7 @@
           プロフィール画像
         </h4>
         <div>
-          <%= @user.avatar %>
+          <%= image_tag @user.get_profile_avatar(200,200) %>
         </div>
       </div>
     </div>

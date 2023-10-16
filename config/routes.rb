@@ -3,18 +3,18 @@ Rails.application.routes.draw do
 # URL /user/sign_in ...
 devise_for :users,skip: :all
 devise_scope :user do
-  get 'users/sign_up' => 'devise/registrations#new', as: :new_user_registration
-  post 'users/sign_up' => 'divise/registrations#create', as: :user_registration
-  get 'users/sign_in' => 'devise/sessions#new', as: :new_user_session
-  delete 'users/logout' => 'devise/sessions#destroy', as: :destroy_user_session
+  get 'users/sign_up' => 'public/registrations#new', as: :new_user_registration
+  post 'users/sign_up' => 'public/registrations#create', as: :user_registration
+  get 'users/sign_in' => 'public/sessions#new', as: :new_user_session
+  delete 'users/logout' => 'public/sessions#destroy', as: :destroy_user_session
 end
 # 管理者用
 # URL /admin/sign_in ...
 devise_for :admin, skip: :all
 devise_scope :admin do
-  get 'admin/sign_in' => 'devise/sessions#new', as: :new_admin_session
-  post 'admin/sign_in' => 'devise/sessions#create', as: :admin_session
-  delete 'admin/logout' => 'devise/sessions#destroy', as: :destroy_admin_session
+  get 'admin/sign_in' => 'admin/sessions#new', as: :new_admin_session
+  post 'admin/sign_in' => 'admin/sessions#create', as: :admin_session
+  delete 'admin/logout' => 'admin/sessions#destroy', as: :destroy_admin_session
 end
 
   scope module: :public do

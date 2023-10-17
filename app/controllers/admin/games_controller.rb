@@ -8,17 +8,22 @@ class Admin::GamesController < ApplicationController
 
   def new
     @game = Game.new
-    @genres_name = Genre.genre_name
+    @genres_name = Genre.pluck(:genre_name,:id)
   end
 
   def create
     @game = Game.new(game_params)
+    if @game.save
+      flash[:notice] = "ジャンル作成に成功しました。"
+      redirect_to admin_show_game_path(game.id)
+    else
+      render :new
+    end
   end
 
   def show
     @game = Game.find(params[:id])
-    @reviews = Review.all.find_by(@game)
-    @commentcount = Comment.all.count
+    @reviews = @game.reviews
   end
 
   def edit
@@ -34,7 +39,7 @@ class Admin::GamesController < ApplicationController
 
   private
   def game_params
-    params.require(:game).permit(:image,:name,:genre_name,:introduction,:price)
+    params.require(:game).permit(:profile_image,:name,:introduction,:price,:genre_id)
 
   end
 end

@@ -1,2 +1,61 @@
-<h1>Admin::Reviews#show</h1>
-<p>Find me in app/views/admin/reviews/show.html.erb</p>
+<div class="contaier">
+  <!--reviews#show-->
+  <div class="row">
+    <div class="col">
+      <h2>
+        <%= @game.name %>
+      </h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= image_tag @game.get_profile_image(100,100) %>
+    </div>
+    <div class="col-md-2">
+      <%= @game.genre %>
+    </div>
+    <div class="col-md-4">
+      <%= @game.created_at%>
+      金額￥<%= @game.price %>
+      <%= link_to "編集する", admin_edit_game_path(game.id), :class => "btn btn-success" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= @game.introduction %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h4>ユーザーのレビュー</h4>
+    </div>
+  </div>
+  <div class="row">
+    <!--game/reviews#index-->
+    <div class="col review_column">
+    <% @reviews.each do |review| %>
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <div class= "col">
+              <%= review.user.name %>のレビュー
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <%= image_tag review.user.get_profile_avatar(50,50) %>
+            </div>
+            <div class="col-md-6">
+              <%= review.review_writing %>
+            </div>
+            <div class="col-md-3">
+              <div><%= @commentcount %></div>
+              <%= link_to "レビュー詳細へ", admin_show_review_path(review.id), :class => "btn btn-success" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>

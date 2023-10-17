@@ -1,6 +1,6 @@
 class Game < ApplicationRecord
 
-  has_one_attached :profileimage
+  has_one_attached :profile_image
   
   belongs_to :genre
   has_many :reviews, dependent: :destroy
@@ -13,6 +13,5 @@ class Game < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
-
-
+  
 end

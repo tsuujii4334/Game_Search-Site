@@ -29,6 +29,7 @@
     <div class="col">
       <h4>ユーザーのレビュー</h4>
     </div>
+  </div>
   <div class="row">
     <!--game/reviews#index-->
     <div class="col review_column">
@@ -48,7 +49,7 @@
               <%= review.review_writing %>
             </div>
             <div class="col-md-3">
-              <div><%= @commentcount %></div>
+              <div><%= review.comments.count %></div>
               <%= link_to "レビュー詳細へ", admin_show_review_path(review.id), :class => "btn btn-success" %>
             </div>
           </div>

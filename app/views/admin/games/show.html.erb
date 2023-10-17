@@ -1,15 +1,15 @@
 <div class="contaier">
- <div class="row">
-  <div class="col">
-   <!--customerindexの記述-->
-    <h2>
-      <%= @game.name %>
-    </h2>
+  <!--games#show-->
+  <div class="row">
+    <div class="col">
+      <h2>
+        <%= @game.name %>
+      </h2>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
-      <%= @game.image %>
+      <%= image_tag @game.get_profile_image(100,100) %>
     </div>
     <div class="col-md-2">
       <%= @game.genre %>
@@ -17,31 +17,45 @@
     <div class="col-md-4">
       <%= @game.created_at%>
       金額￥<%= @game.price %>
-      <%= link_to admin_edit_game_path(game.id),class:"nav-link text-light" do %>
-        マイページ
-      <% end %>
+      <%= link_to "編集する", admin_edit_game_path(game.id), :class => "btn btn-success" %>
     </div>
   </div>
   <div class="row">
     <div class="col">
-      <%= game.introduction %>
+      <%= @game.introduction %>
     </div>
   </div>
   <div class="row">
-    <div class="col review_column">
-      
+    <div class="col">
+      <h4>ユーザーのレビュー</h4>
     </div>
-  </div>
-    
-    <div class="col-md-3">
-      <div>
-        <h4>
-          プロフィール画像
-        </h4>
-        <div>
-          <%= @user.avatar %>
+  <div class="row">
+    <!--game/reviews#index-->
+    <div class="col review_column">
+    <% @reviews.each do |review| %>
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <div class= "col">
+              <%= review.user.name %>のレビュー
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <%= image_tag review.user.get_profile_avatar(50,50) %>
+            </div>
+            <div class="col-md-6">
+              <%= review.review_writing %>
+            </div>
+            <div class="col-md-3">
+              <div><%= @commentcount %></div>
+              <%= link_to "レビュー詳細へ", admin_show_review_path(review.id), :class => "btn btn-success" %>
+            </div>
+          </div>
         </div>
+        
       </div>
+    <% end %>
     </div>
   </div>
 </div>

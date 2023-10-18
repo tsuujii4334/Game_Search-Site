@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col">
      <span>ゲーム一覧</span>
-    </div> 
+    </div>
   </div>
   <div class="row">
     <div class="col-md-4">
@@ -15,18 +15,18 @@
     <div class="col-md-8 scroll">
     <% @games.each do |game| %>
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
           <%= link_to admin_show_game_path(game.id) do %>
-            <div><%= image_tag item.get_image(100,100) %></div>
+            <div><%= image_tag game.get_profile_image(100,100) %></div>
           <% end %>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-5">
           <div><%= game.name %></div>
-          <div><%= game.genres.genre %></div>
+          <div><%= game.genre.genre_name %></div>
         </div>
-        <div class="col-md-3">
-          <div><%= game.created_at %></div>
-          <div><%= game.price %></div>
+        <div class="col-md-4">
+          <div><%= l game.created_at %>(公開日)</div>
+          <div>￥<%= game.price %></div>
         </div>
       </div>
     <% end %>

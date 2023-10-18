@@ -29,13 +29,17 @@ class Admin::GamesController < ApplicationController
 
   def edit
     @games = Game.find(params[:id])
-    @genres = Genre.all
+    @genres_name = Genre.all
   end
 
   def update
     game = Game.find(params[:id])
-    game.update(game_params)
-    redirect_to admin_show_game_path(game.id)
+    if game.update(game_params)
+      flash[:notice] = "ゲーム情報を編集しました。"
+      redirect_to admin_show_game_path(game.id)
+    else
+      render :edit
+    end
   end
 
   private

@@ -8,15 +8,16 @@ class Admin::GamesController < ApplicationController
 
   def new
     @game = Game.new
-    @genres_name = Genre.pluck(:genre_name,:id)
+    @genres_name = Genre.all
   end
 
   def create
     @game = Game.new(game_params)
-    if @game.save
+    if @game.save!
       flash[:notice] = "ジャンル作成に成功しました。"
-      redirect_to admin_show_game_path(game.id)
+      redirect_to admin_show_game_path(@game.id)
     else
+      @genres_name = Genre.all
       render :new
     end
   end

@@ -41,7 +41,7 @@
     </div>
     <div class="col-md-6">
       <div class="field">
-        <%= f.select :genre_id, @genres_name, value:"--選択してください--" %>
+        <%= f.select :genre_id, options_from_collection_for_select(@genres_name, :id, :genre_name) %>
       </div>
     </div>
   </div>

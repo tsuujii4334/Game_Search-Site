@@ -53,17 +53,23 @@ ActiveRecord::Schema.define(version: 2023_10_05_111742) do
   end
 
   create_table "bookmarks", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "game_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "comments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "review_id", null: false
     t.text "comment_writing", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "games", force: :cascade do |t|
+    t.integer "genre_id", null: false
+    t.integer "user_id", null: false
     t.string "name", null: false
     t.text "introduction", null: false
     t.integer "price", null: false
@@ -78,6 +84,8 @@ ActiveRecord::Schema.define(version: 2023_10_05_111742) do
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "game_id", null: false
     t.text "review_writing", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

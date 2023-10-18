@@ -1,4 +1,4 @@
-<div class="contaier">
+<div class="contaier px-5">
   <!--games#show-->
   <div class="row">
     <div class="col">
@@ -9,7 +9,7 @@
   </div>
   <div class="row">
     <div class="col-md-6">
-      <%= image_tag @game.get_profile_image(100,100) %>
+      <%= image_tag @game.get_profile_image(200,200) %>
     </div>
     <div class="col-md-2">
       <%= @game.genre.genre_name %>
@@ -54,7 +54,7 @@
             </div>
           </div>
         </div>
-        
+
       </div>
     <% end %>
     </div>

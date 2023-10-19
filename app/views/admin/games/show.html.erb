@@ -18,9 +18,9 @@
       <%= @game.genre.genre_name %>
     </div>
     <div class="col-md-4">
-      <%= l @game.created_at%>
-      金額￥<%= @game.price %>
-      <%= link_to "編集する", admin_edit_game_path(@game.id), :class => "btn btn-success" %>
+      <div><%= l @game.created_at%></div>
+      <div>金額￥<%= @game.price %></div>
+      <div><%= link_to "編集する", admin_edit_game_path(@game.id), :class => "btn btn-success" %></div>
     </div>
   </div>
   <div class="row">

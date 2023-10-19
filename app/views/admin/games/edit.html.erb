@@ -1,9 +1,12 @@
 <div class="container px-5">
   <%= form_with model: @games, url: admin_update_game_path do |f| %>
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-8">
       <h3>ゲーム編集</h3>
     </div>
+    <dic class="col-md-4">
+      <%= link_to "ゲーム情報の削除", admin_destroy_review_path(@review.id), method: :delete, :class => "btn btn-danger" %>
+    </dic>
   </div>
   <div class="row">
     <div class="col-md-3">

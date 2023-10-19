@@ -41,6 +41,12 @@ class Admin::GamesController < ApplicationController
       render :edit
     end
   end
+  
+  def destroy
+    game = Game.find(params[:id])
+    game.destroy
+    redirect_to admin_games
+  end
 
   private
   def game_params

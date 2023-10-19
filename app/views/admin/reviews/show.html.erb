@@ -1,60 +1,58 @@
-<div class="contaier">
+<div class="contaier px-5">
   <!--reviews#show-->
   <div class="row">
-    <div class="col">
-      <h2>
-        <%= @game.name %>
-      </h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <%= image_tag @game.get_profile_image(100,100) %>
-    </div>
-    <div class="col-md-2">
-      <%= @game.genre %>
+    <div class="col-md-8">
+      <h3>
+        <%= @review.game.name %> レビュー詳細
+      </h3>
     </div>
     <div class="col-md-4">
-      <%= @game.created_at%>
-      金額￥<%= @game.price %>
-      <%= link_to "編集する", admin_edit_game_path(game.id), :class => "btn btn-success" %>
+      <p>
+        <%= @comment.count %>件のコメント
+      </p>
     </div>
   </div>
   <div class="row">
-    <div class="col">
-      <%= @game.introduction %>
+    <div class="col-md-3">
+      <%= image_tag @review.user.get_profile_avatar(100,100) %>
+    </div>
+    <div class="col-md-7">
+      <h4>
+        <%= @review.user.name %>のレビュー
+      </h4>
+      <div>
+        <%= @review.review_writing %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <p>
+        <%= l @review.created_at %>
+      </p>
+      <%= link_to "レビューの削除", admin_destroy_review_path(@review.id), method: :delete, :class => "btn btn-danger" %>
     </div>
   </div>
   <div class="row">
-    <div class="col">
-      <h4>ユーザーのレビュー</h4>
+    <div class="col-md-4">
+      <h3>レビューへのコメント一覧</h3>
     </div>
-  </div>
-  <div class="row">
-    <!--game/reviews#index-->
-    <div class="col review_column">
-    <% @reviews.each do |review| %>
-      <div class="row">
-        <div class="col">
-          <div class="row">
-            <div class= "col">
-              <%= review.user.name %>のレビュー
-            </div>
-          </div>
+    <!--comment#index-->
+    <div class="col-md-8 review_column">
+    <% @comments.each do |comment| %>
           <div class="row">
             <div class="col-md-3">
-              <%= image_tag review.user.get_profile_avatar(50,50) %>
+              <%= image_tag comment.user.get_profile_avatar(50,50) %>
             </div>
             <div class="col-md-6">
-              <%= review.review_writing %>
+              <div>
+                <p><%= comment.user %> のコメント</p>
+              </div>
+                <p><%= comment.comment_writing %></p>
             </div>
             <div class="col-md-3">
-              <div><%= @commentcount %></div>
-              <%= link_to "レビュー詳細へ", admin_show_review_path(review.id), :class => "btn btn-success" %>
+              <div><%= comment.created_at %></div>
+              <%= link_to "コメントの削除", admin_destroy_comment_path(comment.id), method: :delete, :class => "btn btn-success" %>
             </div>
           </div>
-        </div>
-      </div>
     <% end %>
     </div>
   </div>

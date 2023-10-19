@@ -47,6 +47,7 @@ end
     get 'games/new' => 'games#new'
     post 'games' => 'games#create', as: 'create_game'
     get 'games/:id' => 'games#show', as: 'show_game'
+    delete 'games/:id/' => 'games#destroy', as: 'destroy_game'
     get 'games/:id/edit' => 'games#edit', as: 'edit_game'
     patch 'games/:id' => 'games#update', as: 'update_game'
     get 'reviews/:id' => 'reviews#show', as: 'show_review'

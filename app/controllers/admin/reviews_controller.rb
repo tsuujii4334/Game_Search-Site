@@ -5,6 +5,8 @@ class Admin::ReviewsController < ApplicationController
   end
   
   def destroy
-    
+    review = Rreview.find(params[:id])
+    review.destroy
+    redirect_to games_path
   end
 end

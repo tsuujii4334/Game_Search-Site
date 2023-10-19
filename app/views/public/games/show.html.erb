@@ -1,2 +1,75 @@
-<h1>Public::Games#show</h1>
-<p>Find me in app/views/public/games/show.html.erb</p>
+<div>
+  <%= flash[:notice] %>
+</div>
+<div class="contaier px-5">
+  <!--games#show-->
+  <div class="row">
+    <div class="col">
+      <h2>
+        <%= @game.name %>
+      </h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= image_tag @game.get_profile_image(200,200) %>
+    </div>
+    <div class="col-md-2">
+      <%= @game.genre.genre_name %>
+    </div>
+    <div class="col-md-4">
+      <div><%= l @game.created_at%></div>
+      <div>金額￥<%= @game.price %></div>
+      <div><%= link_to "編集する", admin_edit_game_path(@game.id), :class => "btn btn-success" %></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= @game.introduction %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h3>レビュー投稿欄</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h4><%= @game.name %>のレビューを書く</h4>
+    </div>
+    <div class="col-md-3">
+      <%= image_tag current_user.get_profile_avatar(100,100) %>
+    </div>
+    <%= form_with model: @users, url: create_review_path do |f| %>
+    <div class="col-md-7">
+      <%= f.text_field :review_writing, autofocus: true %>
+    </div>
+    <div class="col-md-3">
+      <%= f.submit "レビューを投稿する", class:'btn btn-primary' %>
+    </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h4>レビュー一覧</h4>
+    </div>
+  </div>
+  <!--game/reviews#index-->
+  <% @reviews.each do |review| %>
+    <div class="row">
+      <div class="col-md-12">
+        <%= review.user.name %>のレビュー
+      </div>
+      <div class="col-md-3">
+        <%= image_tag review.user.get_profile_avatar(50,50) %>
+      </div>
+      <div class="col-md-6">
+        <%= review.review_writing %>
+      </div>
+      <div class="col-md-3">
+        <div><%= review.comments.count %></div>
+        <%= link_to "レビュー詳細へ", admin_show_review_path(review.id), :class => "btn btn-success" %>
+      </div>
+    </div>
+  <% end %>
+</div>

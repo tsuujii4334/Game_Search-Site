@@ -28,7 +28,7 @@ class Admin::GamesController < ApplicationController
   end
 
   def edit
-    @games = Game.find(params[:id])
+    @game = Game.find(params[:id])
     @genres_name = Genre.all
   end
 
@@ -41,16 +41,15 @@ class Admin::GamesController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     game = Game.find(params[:id])
     game.destroy
-    redirect_to admin_games
+    redirect_to admin_games_path
   end
 
   private
   def game_params
     params.require(:game).permit(:profile_image,:name,:introduction,:price,:genre_id)
-
   end
 end

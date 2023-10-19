@@ -35,6 +35,9 @@
     <div class="col-md-4">
       <h3>レビューへのコメント一覧</h3>
     </div>
+    <div>
+      <%= link_to "ゲーム詳細ページに戻る", admin_show_game_path(@review.game.id), method: :delete, :class => "btn btn-primary" %>
+    </div>
     <!--comment#index-->
     <div class="col-md-8 review_column">
     <% @comments.each do |comment| %>

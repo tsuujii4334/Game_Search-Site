@@ -32,11 +32,8 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-4">
-      <h3>レビューへのコメント一覧</h3>
-    </div>
     <!--comment#index-->
-    <div class="col-md-8 review_column">
+    <div class="col-md-7 review_column">
     <% @comments.each do |comment| %>
           <div class="row">
             <div class="col-md-3">
@@ -50,10 +47,23 @@
             </div>
             <div class="col-md-3">
               <div><%= comment.created_at %></div>
-              <%= link_to "コメントの削除", admin_destroy_comment_path(comment.id), method: :delete, :class => "btn btn-success" %>
+              <%= link_to "コメントの削除", destroy_comment_path(comment.id), method: :delete, :class => "btn btn-success" %>
             </div>
           </div>
     <% end %>
+    </div>
+    <div class="col-md-5">
+      <%= form_with model: @comment, url: create_comment_path do |f| %>
+      <div>
+        <%= f.text_field :comment_writing, autofocus: true %>
+      </div>
+      <div>
+        <%= f.submit "コメントする", class:'btn btn-primary' %>
+      </div>
+      <% end %>
+      <div>
+        <%= link_to "ゲーム詳細ページに戻る", show_game_path(@review.game.id), method: :delete, :class => "btn btn-success" %>
+      </div>
     </div>
   </div>
 </div>

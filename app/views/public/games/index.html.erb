@@ -11,19 +11,23 @@
     </div>
     <div class="col-md-8 scroll">
     <% @games.each do |game| %>
-    <table>
-      <tr>
-        <td>
-          <%= link_to show_game_path(game.id) do %>
-            <div><%= image_tag item.get_image(100,100) %></div>
-            <div><%= game.name %></div>
-          <% end %>
-        </td>
-        <div>￥<%= game.price %></div>
-      </tr>
-    </table>
-    </div>
+      <div class="col-md-3">
+        <%= link_to show_game_path(game.id) do %>
+          <div><%= image_tag game.get_profile_image(100,100) %></div>
+        <% end %>
+      </div>
+      <div class="col-md-3">
+        <div><%= game.name %></div>
+        <div><%= game.genre %></div><!--ジャンルが正しく表示されない-->
+      </div>
+      <div class="col-md-4">
+        <p><%= l game.created_at %>(公開日)</p>
+      </div>
+      <div class="col-md-2">
+        <%= game.price %>
+      </div>
     <% end %>
+    </div>
     <%= paginate @games %>
   </div>
 </div>

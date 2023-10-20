@@ -33,10 +33,10 @@ class Admin::GamesController < ApplicationController
   end
 
   def update
-    game = Game.find(params[:id])
-    if game.update(game_params)
+    @game = Game.find(params[:id])
+    if @game.update(game_params)
       flash[:notice] = "ゲーム情報を編集しました。"
-      redirect_to admin_show_game_path(game.id)
+      redirect_to admin_show_game_path(@game.id)
     else
       render :edit
     end

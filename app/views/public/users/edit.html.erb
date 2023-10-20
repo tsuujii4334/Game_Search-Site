@@ -37,7 +37,7 @@
           プロフィール画像
         </h4>
         <div>
-          <%= @user.avatar %>
+          <%= image_tag @user.get_profile_avatar(100,100) %>
         </div>
       </div>
     </div>

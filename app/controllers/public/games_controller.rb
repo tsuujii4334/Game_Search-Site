@@ -7,7 +7,8 @@ class Public::GamesController < ApplicationController
   end
 
   def show
-    @game = Game.find(params[:id])
+    @game = Game.find(params[:game_id])
     @reviews = @game.reviews
+    @review = Review.new
   end
 end

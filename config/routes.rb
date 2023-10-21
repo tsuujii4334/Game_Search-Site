@@ -4,8 +4,9 @@ Rails.application.routes.draw do
 devise_for :users,skip: :all
 devise_scope :user do
   get 'users/sign_up' => 'public/registrations#new', as: :new_user_registration
-  post 'users/sign_up' => 'public/registrations#create', as: :user_registration
+  post 'users/sign_up' => 'public/registrations#create', as: :create_user_registration
   get 'users/sign_in' => 'public/sessions#new', as: :new_user_session
+  post 'users/sign_in' => 'public/sessions#create', as: :create_user_session
   delete 'users/logout' => 'public/sessions#destroy', as: :destroy_user_session
 end
 # 管理者用
@@ -13,20 +14,20 @@ end
 devise_for :admin, skip: :all
 devise_scope :admin do
   get 'admin/sign_in' => 'admin/sessions#new', as: :new_admin_session
-  post 'admin/sign_in' => 'admin/sessions#create', as: :admin_session
+  post 'admin/sign_in' => 'admin/sessions#create', as: :create_admin_session
   delete 'admin/logout' => 'admin/sessions#destroy', as: :destroy_admin_session
 end
 
   scope module: :public do
     root to: 'homes#top'
     get 'user/:id/bookmarks' => 'bookmarks#index', as: 'index_bookmark'
-    get 'reviews/:id' => 'reviews#show', as: 'show_review'
+    get 'reviews/:review_id' => 'reviews#show', as: 'show_review'
     post 'games/:game_id/reviews' => 'reviews#create', as: 'create_review'
-    delete 'reviews/:id' => 'reviews#destroy', as: 'destroy_review'
+    delete 'reviews/:review_id' => 'reviews#destroy', as: 'destroy_review'
     post 'reviews/:review_id/comments' => 'comments#create', as: 'create_commnt'
-    delete 'comments/:id' => 'comments#destroy', as: 'destroy_comment'
+    delete 'comments/:comment_id' => 'comments#destroy', as: 'destroy_comment'
     get 'games' => 'games#index'
-    get 'games/:id' => 'games#show', as: 'show_game'
+    get 'games/:game_id' => 'games#show', as: 'show_game'
     get 'users/mypage' => 'users#show', as: 'mypage_user'
     get 'users/edit' => 'users#edit', as: 'edit_user'
     patch 'users' => 'users#update', as: 'update_user'

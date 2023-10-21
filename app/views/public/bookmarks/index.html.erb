@@ -1,2 +1,33 @@
-<h1>Public::Bookmarks#index</h1>
-<p>Find me in app/views/public/bookmarks/index.html.erb</p>
+<div class ="container px-4">
+  <div class="row">
+    <div class="col">
+     <span>ブックマーク一覧</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <h4>絞り込み</h4><span>(全<%= @bookmarkcount%>件)</span>
+      <p>金額</p>
+    </div>
+    <div class="col-md-8 scroll">
+    <% @bookmarks.each do |bookmark| %>
+      <div class="col-md-3">
+        <%= link_to show_game_path(bookmark.game.id) do %>
+          <div><%= image_tag bookmark.game.get_profile_image(100,100) %></div>
+        <% end %>
+      </div>
+      <div class="col-md-3">
+        <div><%= bookmark.game.name %></div>
+        <div><%= bookmark.game.genre.genre_name %></div><!--ジャンルが正しく表示されない-->
+      </div>
+      <div class="col-md-4">
+        <p><%= l bookmark.game.created_at %>(公開日)</p>
+      </div>
+      <div class="col-md-2">
+        <%= bookmark.game.price %>￥
+      </div>
+    <% end %>
+    </div>
+    <%= paginate @bookmarks %>
+  </div>
+</div>

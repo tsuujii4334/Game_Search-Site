@@ -9,6 +9,12 @@ class Public::GamesController < ApplicationController
   def show
     @game = Game.find(params[:game_id])
     @reviews = @game.reviews
-    @review = Review.new
+    @review = Review.new(params[:review_id])
+    @current_user = current_user
+  end
+
+  private
+  def review_params
+    params.require(:review).permit(:review_writing)
   end
 end

@@ -1,15 +1,16 @@
 class Public::ReviewsController < ApplicationController
   def show
-    @review = Review.find(params[:id])
+    @review = Review.find(params[:review_id])
     @comments = @review.comment.all
   end
 
   def create
-    @game = Game.find(params[:game_id])
     @review = Review.new(review_params)
+    @review.user = current_user
+    @review.game = Game.find(params[:game_id])
     @review.save!#セーブされない
     flash[:notice] = "レビューを投稿しました。"
-    redirect_to show_game_path(@game.id)
+    redirect_to show_game_path(@review.game.id)
   end
 
   def destroy

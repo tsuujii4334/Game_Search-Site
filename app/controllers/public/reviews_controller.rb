@@ -1,6 +1,7 @@
 class Public::ReviewsController < ApplicationController
   def show
     @review = Review.find(params[:review_id])
+    @comment = Comment.new
     @comments = @review.comments.all
   end
 
@@ -14,8 +15,8 @@ class Public::ReviewsController < ApplicationController
   end
 
   def destroy
-    review = Rreview.find(params[:id])
-    review.destroy
+    @review = Review.find(params[:review_id])
+    @review.destroy
     redirect_to games_path
   end
 
@@ -23,4 +24,5 @@ class Public::ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:review_writing)
   end
+  
 end

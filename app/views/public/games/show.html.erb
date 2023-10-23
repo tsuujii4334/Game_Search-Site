@@ -20,6 +20,11 @@
     <div class="col-md-4">
       <div><%= l @game.created_at%></div>
       <div>金額￥<%= @game.price %></div>
+      <div>
+        <%= form_with model: @bookmark, url: create_bookmark_path(@game.id) do |f| %>
+          <%= f.submit "ブックマーク", class:'btn btn-primary' %>
+        <% end %>
+      </div>
     </div>
   </div>
   <div class="row">
@@ -66,7 +71,7 @@
         <%= review.review_writing %>
       </div>
       <div class="col-md-3">
-        <div><%= review.comments.count %></div>
+        <div>コメント数 <%= review.comments.count %>件</div>
         <%= link_to "レビュー詳細へ", show_review_path(review.id), :class => "btn btn-success" %>
       </div>
     </div>

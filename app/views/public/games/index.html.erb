@@ -11,6 +11,7 @@
     </div>
     <div class="col-md-8 scroll">
     <% @games.each do |game| %>
+    <div class="row">
       <div class="col-md-3">
         <%= link_to show_game_path(game.id) do %>
           <div><%= image_tag game.get_profile_image(100,100) %></div>
@@ -26,6 +27,7 @@
       <div class="col-md-2">
         <%= game.price %>￥
       </div>
+    </div>
     <% end %>
     </div>
     <%= paginate @games %>

@@ -8,15 +8,14 @@ class Public::CommentsController < ApplicationController
     flash[:notice] = "コメントをしました。"
     redirect_to show_review_path(@comment.review.id)
   end
-  
+
   def destroy
-    @review = Rreview.find(params[:id])
-    comment = Comment.find(params[:id])
-    comment.destroy
+    @comment = Comment.find(params[:comment_id])
+    @comment.destroy
     flash[:notice] = "コメントが削除されました。"
-    redirect_to show_review_path(@review.id)
+    redirect_to show_review_path(@comment.review.id)
   end
-  
+
   private
   def comment_params
     params.require(:comment).permit(:comment_writing)

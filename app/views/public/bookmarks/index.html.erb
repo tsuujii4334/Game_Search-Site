@@ -11,6 +11,7 @@
     </div>
     <div class="col-md-8 scroll">
     <% @bookmarks.each do |bookmark| %>
+    <div class="row">
       <div class="col-md-3">
         <%= link_to show_game_path(bookmark.game.id) do %>
           <div><%= image_tag bookmark.game.get_profile_image(100,100) %></div>
@@ -22,10 +23,12 @@
       </div>
       <div class="col-md-4">
         <p><%= l bookmark.game.created_at %>(公開日)</p>
+        <%= link_to "ブックマークを解除する", destroy_bookmark_path(@bookmark.id), method: :delete, :class => "btn btn-danger" %>
       </div>
       <div class="col-md-2">
         <%= bookmark.game.price %>￥
       </div>
+    </div>
     <% end %>
     </div>
     <%= paginate @bookmarks %>

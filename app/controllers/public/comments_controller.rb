@@ -1,10 +1,12 @@
 class Public::CommentsController < ApplicationController
   def create
-    @review = Review.find(params[:id])
+    @review = Review.find(params[:review_id])
     @comment = Comment.new(comment_params)
+    @comment.user = current_user
+    @comment.review = @review
     @comment.save!
     flash[:notice] = "コメントをしました。"
-    redirect_to show_review_path(@review.id)
+    redirect_to show_review_path(@comment.review.id)
   end
   
   def destroy
@@ -16,7 +18,7 @@ class Public::CommentsController < ApplicationController
   end
   
   private
-  def game_params
+  def comment_params
     params.require(:comment).permit(:comment_writing)
   end
 end

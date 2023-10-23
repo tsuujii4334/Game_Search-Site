@@ -20,7 +20,6 @@
     <div class="col-md-4">
       <div><%= l @game.created_at%></div>
       <div>金額￥<%= @game.price %></div>
-      <div><%= link_to "編集する", admin_edit_game_path(@game.id), :class => "btn btn-success" %></div>
     </div>
   </div>
   <div class="row">
@@ -68,7 +67,7 @@
       </div>
       <div class="col-md-3">
         <div><%= review.comments.count %></div>
-        <%= link_to "レビュー詳細へ", admin_show_review_path(review.id), :class => "btn btn-success" %>
+        <%= link_to "レビュー詳細へ", show_review_path(review.id), :class => "btn btn-success" %>
       </div>
     </div>
   <% end %>

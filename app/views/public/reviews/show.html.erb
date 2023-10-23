@@ -8,7 +8,7 @@
     </div>
     <div class="col-md-4">
       <p>
-        <%= @comment.count %>件のコメント
+        <%= @comments.count %>件のコメント
       </p>
     </div>
   </div>
@@ -28,7 +28,7 @@
       <p>
         <%= l @review.created_at %>
       </p>
-      <%= link_to "レビューの削除", admin_destroy_review_path(@review.id), method: :delete, :class => "btn btn-danger" %>
+      <%= link_to "レビューの削除", destroy_review_path(@review.id), method: :delete, :class => "btn btn-danger" %>
     </div>
   </div>
   <div class="row">
@@ -53,7 +53,7 @@
     <% end %>
     </div>
     <div class="col-md-5">
-      <%= form_with model: @comment, url: create_comment_path do |f| %>
+      <%= form_with model: @comment, url: create_comment_path(@review.id) do |f| %>
       <div>
         <%= f.text_field :comment_writing, autofocus: true %>
       </div>

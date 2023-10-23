@@ -24,7 +24,7 @@ end
     get 'reviews/:review_id' => 'reviews#show', as: 'show_review'
     post 'games/:game_id/reviews' => 'reviews#create', as: 'create_review'
     delete 'reviews/:review_id' => 'reviews#destroy', as: 'destroy_review'
-    post 'reviews/:review_id/comments' => 'comments#create', as: 'create_commnt'
+    post 'reviews/:review_id/comments' => 'comments#create', as: 'create_comment'
     delete 'comments/:comment_id' => 'comments#destroy', as: 'destroy_comment'
     get 'games' => 'games#index'
     get 'games/:game_id' => 'games#show', as: 'show_game'

@@ -20,7 +20,7 @@ end
 
   scope module: :public do
     root to: 'homes#top'
-    delete 'bookmarks/:bookmark_id' => 'bookmark#destroy', as: 'destroy_bookmark'
+    delete 'bookmarks/:bookmark_id' => 'bookmarks#destroy', as: 'destroy_bookmark'
     post 'games/:game_id/bookmarks' => 'bookmarks#create', as: 'create_bookmark'
     get 'user/:id/bookmarks' => 'bookmarks#index', as: 'index_bookmark'
     get 'reviews/:review_id' => 'reviews#show', as: 'show_review'

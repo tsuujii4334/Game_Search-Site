@@ -15,7 +15,7 @@ class Public::BookmarksController < ApplicationController
     redirect_to show_game_path(@bookmark.game.id)
   end
   
-  def delete
+  def destroy
     @bookmark = Bookmark.find(params[:bookmark_id])
     @bookmark.destroy
     redirect_to index_bookmark_path(current_user)

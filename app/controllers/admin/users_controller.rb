@@ -10,9 +10,9 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-       redirect_to admin_show_user_path(user.id)
+       redirect_to admin_users_path
     else
-       render 'show'
+       render :show
     end
   end
     private

@@ -1,7 +1,6 @@
 class Admin::ReviewsController < ApplicationController
   def show
     @review = Review.find(params[:review_id])
-    @comment = 
     @comments = @review.comments.all
   end
   

@@ -7,7 +7,7 @@ devise_scope :user do
   post 'users/sign_up' => 'public/registrations#create', as: :create_user_registration
   get 'users/sign_in' => 'public/sessions#new', as: :new_user_session
   post 'users/sign_in' => 'public/sessions#create', as: :create_user_session
-  delete 'users/logout' => 'public/sessions#destroy', as: :destroy_user_session
+  delete 'users/sign_out' => 'public/sessions#destroy', as: :destroy_user_session
 end
 # 管理者用
 # URL /admin/sign_in ...
@@ -18,6 +18,8 @@ devise_scope :admin do
   delete 'admin/logout' => 'admin/sessions#destroy', as: :destroy_admin_session
 end
 
+  
+  
   scope module: :public do
     root to: 'homes#top'
     delete 'bookmarks/:bookmark_id' => 'bookmarks#destroy', as: 'destroy_bookmark'
@@ -36,6 +38,8 @@ end
     get 'users/confirm' => 'users#confirm'
     patch 'users/withdrawal' => 'users#withdrawal'
     get '/' => 'homes#top'
+    get "search" => "searches#search"
+    get 'searches/index'
   end
 
   namespace :admin do
@@ -56,6 +60,8 @@ end
     get 'reviews/:review_id' => 'reviews#show', as: 'show_review'
     delete 'reviews/:review_id' => 'reviews#destroy', as: 'destroy_review'
     delete 'comments/:comment_id' => 'comments#destroy',as: 'destroy_comment'
+    get "search" => "searches#search"
+    get 'searches/index'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -4,7 +4,7 @@ class Game < ApplicationRecord
   
   belongs_to :genre
   has_many :reviews, dependent: :destroy
-  has_many :bookmarks
+  has_many :bookmarks, dependent: :destroy
   
   def get_profile_image(width,height)
     unless profile_image.attached?
@@ -12,6 +12,20 @@ class Game < ApplicationRecord
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
+  end
+  
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @game = Game.where("name LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @game = Game.where("name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @game = Game.where("name LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @game = Game.where("name LIKE?","%#{word}%")
+    else
+      @game = Game.all
+    end
   end
   
 end

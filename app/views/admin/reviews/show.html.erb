@@ -8,7 +8,7 @@
     </div>
     <div class="col-md-4">
       <p>
-        <%= @comment.count %>件のコメント
+        <%= @comments.count %>件のコメント
       </p>
     </div>
   </div>
@@ -47,7 +47,7 @@
             </div>
             <div class="col-md-6">
               <div>
-                <p><%= comment.user %> のコメント</p>
+                <p><%= comment.user.name %> のコメント</p>
               </div>
                 <p><%= comment.comment_writing %></p>
             </div>

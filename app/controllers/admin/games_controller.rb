@@ -23,17 +23,17 @@ class Admin::GamesController < ApplicationController
   end
 
   def show
-    @game = Game.find(params[:id])
+    @game = Game.find(params[:game_id])
     @reviews = @game.reviews
   end
 
   def edit
-    @game = Game.find(params[:id])
+    @game = Game.find(params[:game_id])
     @genres_name = Genre.all
   end
 
   def update
-    @game = Game.find(params[:id])
+    @game = Game.find(params[:game_id])
     if @game.update(game_params)
       flash[:notice] = "ゲーム情報を編集しました。"
       redirect_to admin_show_game_path(@game.id)
@@ -43,7 +43,7 @@ class Admin::GamesController < ApplicationController
   end
 
   def destroy
-    game = Game.find(params[:id])
+    game = Game.find(params[:game_id])
     game.destroy
     redirect_to admin_games_path
   end

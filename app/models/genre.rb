@@ -3,7 +3,7 @@ class Genre < ApplicationRecord
   
   def self.looks(search, word)
     if search == "perfect_match"
-      @genre = Genre.where("gnere_name LIKE?","#{word}")
+      @genre = Genre.where("genre_name LIKE?","#{word}")
     elsif search == "forward_match"
       @genre = Genre.where("genre_name LIKE?","#{word}%")
     elsif search == "backward_match"

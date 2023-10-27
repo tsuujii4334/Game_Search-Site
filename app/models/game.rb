@@ -28,4 +28,12 @@ class Game < ApplicationRecord
     end
   end
   
+  def narrow_down_price
+    @free_game = Game.where(price = 0 )#値段で絞り込む機能を実装途中
+    @1_500_game = Game.where("(? < price) and (price < ?)", 1,500)
+    @501_2000_game = Game.where("501 < price < 2000")
+    @2001_5000_game = Game.where(price)
+    @5001_game = Game.where(price)
+  end
+  
 end

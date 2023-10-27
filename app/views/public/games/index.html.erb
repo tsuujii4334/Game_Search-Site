@@ -8,6 +8,13 @@
     <div class="col-md-4">
       <h4>絞り込み</h4><span>(全<%= @gamecount%>件)</span>
       <p>金額</p>
+      <div>
+        <%= link_to "無料", index_games_path :class => "btn btn-primary" %>
+        <%= link_to "1~500円", index_games_path :class => "btn btn-primary" %>
+        <%= link_to "501~2,000円", index_games_path :class => "btn btn-primary" %>
+        <%= link_to "2,001~5,000円", index_games_path :class => "btn btn-primary" %>
+        <%= link_to "5001円", index_games_path :class => "btn btn-primary" %>
+      </div>
     </div>
     <div class="col-md-8 scroll">
     <% @games.each do |game| %>

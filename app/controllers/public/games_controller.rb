@@ -1,7 +1,8 @@
 class Public::GamesController < ApplicationController
   def index
     @gamecount = Game.all.count
-    @games = Game.all.page(params[:page]).per(8)
+    # @games = Game.all.page(params[:page]).per(8)
+    @games = Game.all.filter_price(game_filter_params).page(params[:page]).per(8)
   end
 
   def show
@@ -14,5 +15,9 @@ class Public::GamesController < ApplicationController
   private
   def review_params
     params.require(:review).permit(:review_writing)
+  end
+  
+  def game_filter_params
+    params.permit(:price)
   end
 end

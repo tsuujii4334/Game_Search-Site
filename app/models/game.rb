@@ -28,12 +28,25 @@ class Game < ApplicationRecord
     end
   end
   
-  def narrow_down_price
-    @free_game = Game.where(price = 0 )#値段で絞り込む機能を実装途中
-    @game_1_500 = Game.where('price >= ? AND price <= ?', 1, 500)
-    @game_501_2000 = Game.where('price >= ? AND price <= ?', 501, 2000)
-    @game_2001_5000 = Game.where('price >= ? AND price <= ?', 2001, 5000)
-    @game_5001 = Game.where('price >= ?', 5001)
+  def self.filter_price(params)
+    if params[:price].present?
+      case params[:price]
+      when "0"
+        where(price: 0)
+      when "1..500"
+        where(price: 1..500)
+      when "501..2000"
+        where(price: 501..2000)
+      when "2001..5000"
+        where(price: 2001..5000)
+      when "5001.."
+        where("price >= ?",5001)#5001以上だけ絞り込み
+      else
+        all
+      end
+    else
+      all
+    end
   end
   
 end

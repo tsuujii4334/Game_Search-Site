@@ -12,7 +12,7 @@
       <div><%= link_to "1~500円", games_path(price:1..500), :class => "btn btn-primary" %></div>
       <div><%= link_to "501~2,000円", games_path(price:501..2000), :class => "btn btn-primary" %></div>
       <div><%= link_to "2,001~5,000円", games_path(price:2001..5000), :class => "btn btn-primary" %></div>
-      <div><%= link_to "5001円~", games_path(price: 5001), :class => "btn btn-primary" %></div>
+      <div><%= link_to "5001円~", games_path(price: 5001..), :class => "btn btn-primary" %></div>
     </div>
     <div class="col-md-8 scroll">
     <% @games.each do |game| %>

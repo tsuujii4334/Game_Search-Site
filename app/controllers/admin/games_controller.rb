@@ -1,9 +1,7 @@
 class Admin::GamesController < ApplicationController
   def index
     @gamecount = Game.all.count
-    @games = Game.all.page(params[:page]).per(8)
-    @game = Game.where(price: 1..1000 )#値段で絞り込む機能を実装途中
-    # @game = Game("games.price DESC")
+    @games = Game.all.filter_price(game_filter_params).page(params[:page]).per(8)
   end
 
   def new
@@ -51,5 +49,9 @@ class Admin::GamesController < ApplicationController
   private
   def game_params
     params.require(:game).permit(:profile_image,:name,:introduction,:price,:genre_id)
+  end
+  
+  def game_filter_params
+    params.permit(:price)
   end
 end

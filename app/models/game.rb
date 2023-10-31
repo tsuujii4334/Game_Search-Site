@@ -6,6 +6,10 @@ class Game < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   
+  validates :name, length: { in: 1..30 } 
+  validates :introduction, length: { in: 1..75 }
+  validates :price, numericality: true
+  
   def get_profile_image(width,height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

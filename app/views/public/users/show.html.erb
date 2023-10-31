@@ -1,6 +1,6 @@
 <div class="contaier">
  <div class="row">
-  <div class="col-md-4 offset-md-1">
+  <div class="col-md-6 offset-md-1">
     <h2>
       マイページ
     </h2>
@@ -21,9 +21,15 @@
             <%= link_to "ブックマーク一覧へ", index_bookmark_path(@user.id), :class => "btn btn-primary ms-3" %>
           </td>
         </tr>
+        <tr>
+          <td>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, :class => "btn btn-danger" %>
+          </td>
+          <td></td>
+        </tr>
       </table>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-5">
       <div>
         <h4>
           プロフィール画像

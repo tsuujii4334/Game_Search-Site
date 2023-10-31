@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+.introduction_field {
+  width: 500px;
+  height: 400px;
+  background-color: red;
+}
+
+.btn{
+  width: 1000px;
+  height: 50px;
+  font-size: 0.8rem;
+  background-color: blue;
+}

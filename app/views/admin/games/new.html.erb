@@ -30,8 +30,8 @@
       <p>ゲーム説明</p>
     </div>
     <div class="col-md-6">
-      <div class="field">
-        <%= f.text_field :introduction, autofocus: true, value:"ここに説明文を記入します。" %>
+      <div class="introduction_field">
+        <%= f.text_area :introduction, size: "50", autofocus: true, value:"ここに説明文を記入します。" %>
       </div>
     </div>
   </div>

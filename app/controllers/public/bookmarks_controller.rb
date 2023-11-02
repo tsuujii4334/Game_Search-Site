@@ -10,9 +10,15 @@ class Public::BookmarksController < ApplicationController
     @bookmark.user = current_user
     @bookmark.game = Game.find(params[:game_id])
     @game = Game.find(params[:game_id])
-    @bookmark.save!
-    flash[:notice] = "ブックマークしました。"
-    redirect_to show_game_path(@bookmark.game.id)
+    already_bookmark = current_user.bookmarks.find_by(game_id: @bookmark.game_id)
+    if already_bookmark
+      flash[:notice] = "すでにブックマークしています。"
+      redirect_to show_game_path(@bookmark.game.id)
+    else
+      @bookmark.save!
+      flash[:notice] = "ブックマークしました。"
+      redirect_to show_game_path(@bookmark.game.id)
+    end
   end
   
   def destroy

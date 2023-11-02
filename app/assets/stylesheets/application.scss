@@ -1,0 +1,19 @@
+.introduction_field {
+  width: 500px;
+  height: 400px;
+  background-color: red;
+}
+
+.custom-button {
+  display: inline-block; /* ボタンをインラインブロック要素に設定 */
+  width:150px;
+  height:50px;
+  margin:10px;
+  padding: 10px 20px; /* パディングを調整してボタンのサイズを変更 */
+  background-color: #007bff; /* ボタンの背景色 */
+  color: #fff; /* テキストの色 */
+  text-decoration: none; /* リンクの下線を非表示に */
+  border: 1px solid #007bff; /* ボーダーのスタイル */
+  border-radius: 5px; /* 角丸の設定 */
+}
+

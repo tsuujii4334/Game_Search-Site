@@ -8,10 +8,10 @@
     <div class="col-md-4">
       <h4>絞り込み</h4><span>(全<%= @gamecount%>件)</span>
       <p>金額</p>
-      <div><%= link_to "無料", games_path(price: 0), :class => "btn btn-primary btn" %></div>
-      <div><%= link_to "1~500円", games_path(price:1..500), :class => "btn btn-primary btn-lg" %></div>
-      <div><%= link_to "501~2,000円", games_path(price:501..2000), :class => "btn btn-primary btn-lg" %></div>
-      <div><%= link_to "2,001~5,000円", games_path(price:2001..5000), :class => "btn btn-primary btn-lg" %></div>
+      <div><%= link_to "無料", games_path(price: 0), :class => "custom-button" %></div>
+      <div><%= link_to "1~500円", games_path(price:1..500), :class => "custom-button" %></div>
+      <div><%= link_to "501~2,000円", games_path(price:501..2000), :class => "custom-button" %></div>
+      <div><%= link_to "2,001~5,000円", games_path(price:2001..5000), :class => "custom-button" %></div>
       <div><%= link_to "5001円~", games_path(price: 5001..), :class => "custom-button" %></div>
     </div>
     <div class="col-md-8 scroll">

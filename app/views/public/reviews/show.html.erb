@@ -28,7 +28,9 @@
       <p>
         <%= l @review.created_at %>
       </p>
-      <%= link_to "レビューの削除", destroy_review_path(@review.id), method: :delete, :class => "btn btn-danger" %>
+      <% if @review.user == current_user %>
+        <%= link_to "レビューの削除", destroy_review_path(@review.id), method: :delete, :class => "btn btn-danger" %>
+      <% end %>
     </div>
   </div>
   <div class="row">
@@ -47,7 +49,9 @@
             </div>
             <div class="col-md-3">
               <div><%= l comment.created_at %></div>
-              <%= link_to "コメントの削除", destroy_comment_path(comment.id), method: :delete, :class => "btn btn-success" %>
+              <% if comment.user == current_user %>
+                <%= link_to "コメントの削除", destroy_comment_path(comment.id), method: :delete, :class => "btn btn-success" %>
+              <% end %>
             </div>
           </div>
     <% end %>

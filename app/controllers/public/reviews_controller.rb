@@ -10,7 +10,6 @@ class Public::ReviewsController < ApplicationController
     @review.user = current_user
     @review.game = Game.find(params[:game_id])
     @review.save!
-    flash[:notice] = "レビューを投稿しました。"
     redirect_to show_game_path(@review.game.id)
   end
 

@@ -5,7 +5,6 @@ class Public::CommentsController < ApplicationController
     @comment.user = current_user
     @comment.review = @review
     @comment.save!
-    flash[:notice] = "コメントをしました。"
     redirect_to show_review_path(@comment.review.id)
   end
 

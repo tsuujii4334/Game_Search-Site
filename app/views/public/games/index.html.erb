@@ -1,22 +1,23 @@
 <div class ="container px-4">
   <div class="row">
     <div class="col">
-     <span>ゲーム一覧</span>
+     <h3>ゲーム一覧</h3>
     </div>
   </div>
   <div class="row">
     <div class="col-md-4">
-      <h4>絞り込み</h4><span>(全<%= @gamecount%>件)</span>
-      <p>金額</p>
-      <div><%= link_to "無料", games_path(price: 0), :class => "custom-button" %></div>
-      <div><%= link_to "1~500円", games_path(price:1..500), :class => "custom-button" %></div>
-      <div><%= link_to "501~2,000円", games_path(price:501..2000), :class => "custom-button" %></div>
-      <div><%= link_to "2,001~5,000円", games_path(price:2001..5000), :class => "custom-button" %></div>
-      <div><%= link_to "5001円~", games_path(price: 5001..), :class => "custom-button" %></div>
+      <div class="narrow-down">
+        <h5 class="side">絞り込み</h5><div>(該当数<%= @gamecount%>件)</div>
+        <div><%= link_to "無料", games_path(price: 0), :class => "custom-button" %></div>
+        <div><%= link_to "1~500円", games_path(price:1..500), :class => "custom-button" %></div>
+        <div><%= link_to "501~2,000円", games_path(price:501..2000), :class => "custom-button" %></div>
+        <div><%= link_to "2,001~5,000円", games_path(price:2001..5000), :class => "custom-button" %></div>
+        <div><%= link_to "5001円~", games_path(price: 5001..), :class => "custom-button" %></div>
+      </div>
     </div>
     <div class="col-md-8 scroll">
     <% @games.each do |game| %>
-    <div class="row">
+    <div class="row sand">
       <div class="col-md-3">
         <%= link_to show_game_path(game.id) do %>
           <div><%= image_tag game.get_profile_image(100,100) %></div>
@@ -24,7 +25,7 @@
       </div>
       <div class="col-md-3">
         <div><%= game.name %></div>
-        <div><%= game.genre.genre_name %></div><!--ジャンルが正しく表示されない-->
+        <div><%= game.genre.genre_name %></div>
       </div>
       <div class="col-md-4">
         <p><%= l game.created_at %>(公開日)</p>

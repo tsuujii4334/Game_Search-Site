@@ -5,12 +5,21 @@ class Public::UsersController < ApplicationController
 
   def edit
     @user = current_user
+    if @user.id == current_user.id
+      redirect_to edit_user_path
+    else
+      redirect_to root_path
+    end
   end
   
   def update
-    user = current__user
-    user.update(user_params)
-    redirect_to mypage_user_path
+    @user = current_user
+    if @user.id == current_user.id
+      @user.update(user_params)
+      redirect_to mypage_user_path
+    else
+      render :edit
+    end
   end
 
   def confirm

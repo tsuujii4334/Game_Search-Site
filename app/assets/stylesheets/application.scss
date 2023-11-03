@@ -1,3 +1,12 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: gray;
+}
+
 .introduction_field {
   width: 500px;
   height: 400px;
@@ -10,10 +19,49 @@
   height:50px;
   margin:10px;
   padding: 10px 20px; /* パディングを調整してボタンのサイズを変更 */
-  background-color: #007bff; /* ボタンの背景色 */
-  color: #fff; /* テキストの色 */
+  background-color: dodgerblue; /* ボタンの背景色 */
+  color: black; /* テキストの色 */
   text-decoration: none; /* リンクの下線を非表示に */
   border: 1px solid #007bff; /* ボーダーのスタイル */
   border-radius: 5px; /* 角丸の設定 */
+}
+
+h1 {
+  width:550px;
+  height:60px;
+  color: gray;
+  border: 2px solid black;
+}
+
+h3 {
+  
+}
+
+h4 {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 2px solid darkgreen;
+}
+
+.narrow-down {
+  width: 280px;
+  padding: 10px 20px;
+  background-color: linen;
+  border: 1px solid navajowhite;
+}
+
+.side {
+  float: left;
+}
+
+.center {
+  width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sand {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
 }
 

@@ -14,7 +14,7 @@
     <div class="col-md-6">
       <%= image_tag @game.get_profile_image(200,200) %>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-2 genre">
       <%= @game.genre.genre_name %>
     </div>
     <div class="col-md-4">
@@ -39,14 +39,14 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <h4><%= @current_user.name %>のレビューを書く</h4>
+      <h5><%= @current_user.name %>のレビューを書く</h5>
     </div>
     <div class="col-md-3">
       <%= image_tag current_user.get_profile_avatar(100,100) %>
     </div>
     <%= form_with model: @review, url: create_review_path(@game.id) do |f| %>
-    <div class="col-md-7">
-      <%= f.text_field :review_writing, autofocus: true %>
+    <div class="col-md-7 text_area">
+      <%= f.text_area :review_writing, autofocus: true %>
     </div>
     <div class="col-md-3">
       <%= f.submit "レビューを投稿する", class:'btn btn-primary' %>
@@ -55,7 +55,7 @@
   </div>
   <div class="row">
     <div class="col">
-      <h4>レビュー一覧</h4>
+      <h5>レビュー一覧</h5>
     </div>
   </div>
   <!--game/reviews#index-->

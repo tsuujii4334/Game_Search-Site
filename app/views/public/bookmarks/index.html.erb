@@ -18,7 +18,7 @@
     <div class="col-md-8 scroll">
     <% @bookmark_games.each do |bookmark_game| %>
     <% @bookmark = Bookmark.find_by(user_id: current_user.id, game_id: bookmark_game.id) %>
-    <div class="row">
+    <div class="row sand">
       <div class="col-md-3">
         <%= link_to show_game_path(bookmark_game.id) do %>
           <div><%= image_tag bookmark_game.get_profile_image(100,100) %></div>
@@ -26,7 +26,7 @@
       </div>
       <div class="col-md-3">
         <div><%= bookmark_game.name %></div>
-        <div><%= bookmark_game.genre.genre_name %></div><!--ジャンルが正しく表示されない-->
+        <div class="genre"><%= bookmark_game.genre.genre_name %></div><!--ジャンルが正しく表示されない-->
       </div>
       <div class="col-md-4">
         <p><%= l bookmark_game.created_at %>(公開日)</p>

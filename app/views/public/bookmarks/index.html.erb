@@ -6,31 +6,38 @@
   </div>
   <div class="row">
     <div class="col-md-4">
-      <h4>絞り込み</h4><span>(全<%= @bookmarkcount%>件)</span>
-      <p>金額</p>
+      <div class="narrow-down">
+        <h5 class="side">絞り込み</h5><div>(該当数<%= @bookmarkcount%>件)</div>
+        <div><%= link_to "無料", games_path(price: 0), :class => "custom-button" %></div>
+        <div><%= link_to "1~500円", games_path(price:1..500), :class => "custom-button" %></div>
+        <div><%= link_to "501~2,000円", games_path(price:501..2000), :class => "custom-button" %></div>
+        <div><%= link_to "2,001~5,000円", games_path(price:2001..5000), :class => "custom-button" %></div>
+        <div><%= link_to "5001円~", games_path(price: 5001..), :class => "custom-button" %></div>
+      </div>
     </div>
     <div class="col-md-8 scroll">
-    <% @bookmarks.each do |bookmark| %>
+    <% @bookmark_games.each do |bookmark_game| %>
+    <% @bookmark = Bookmark.find_by(user_id: current_user.id, game_id: bookmark_game.id) %>
     <div class="row">
       <div class="col-md-3">
-        <%= link_to show_game_path(bookmark.game.id) do %>
-          <div><%= image_tag bookmark.game.get_profile_image(100,100) %></div>
+        <%= link_to show_game_path(bookmark_game.id) do %>
+          <div><%= image_tag bookmark_game.get_profile_image(100,100) %></div>
         <% end %>
       </div>
       <div class="col-md-3">
-        <div><%= bookmark.game.name %></div>
-        <div><%= bookmark.game.genre.genre_name %></div><!--ジャンルが正しく表示されない-->
+        <div><%= bookmark_game.name %></div>
+        <div><%= bookmark_game.genre.genre_name %></div><!--ジャンルが正しく表示されない-->
       </div>
       <div class="col-md-4">
-        <p><%= l bookmark.game.created_at %>(公開日)</p>
-        <%= link_to "ブックマークを解除する", destroy_bookmark_path(bookmark.id), method: :delete, :class => "btn btn-danger" %>
+        <p><%= l bookmark_game.created_at %>(公開日)</p>
+        <%= link_to "ブックマークを解除する", destroy_bookmark_path(@bookmark.id), method: :delete, :class => "btn btn-danger" %>
       </div>
       <div class="col-md-2">
-        <%= bookmark.game.price %>￥
+        <%= bookmark_game.price %>￥
       </div>
     </div>
     <% end %>
     </div>
-    <%= paginate @bookmarks %>
+    <%= paginate @bookmark_games %>
   </div>
 </div>

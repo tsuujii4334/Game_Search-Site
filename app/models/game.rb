@@ -44,7 +44,7 @@ class Game < ApplicationRecord
       when "2001..5000"
         where(price: 2001..5000)
       when "5001.."
-        where("price >= ?",5001)#5001以上だけ絞り込み
+        where("price >= ?",5001)
       else
         all
       end

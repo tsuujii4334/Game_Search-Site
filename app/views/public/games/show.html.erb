@@ -1,41 +1,44 @@
 <div>
-  <%= flash[:notice] %>
+  <%= flash[:notice] %> <!--ログインのフラッシュメッセージがたまに表示される-->
 </div>
 <div class="contaier px-5">
   <!--games#show-->
   <div class="row">
     <div class="col">
-      <h2>
+      <div class="game-title">
         <%= @game.name %>
-      </h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <%= image_tag @game.get_profile_image(200,200) %>
-    </div>
-    <div class="col-md-2 genre">
-      <%= @game.genre.genre_name %>
-    </div>
-    <div class="col-md-4">
-      <div><%= l @game.created_at%></div>
-      <div>金額￥<%= @game.price %></div>
-      <div>
-        <%= form_with model: @bookmark, url: create_bookmark_path(@game.id) do |f| %>
-          <%= f.submit "ブックマーク", class:'btn btn-primary' %>
-        <% end %>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col">
-      <%= @game.introduction %>
+    <div class="col-md-3">
+      <%= image_tag @game.get_profile_image(200,200) %>
+    </div>
+    <div class="col-md-1 genre down">
+      <%= @game.genre.genre_name %>
+    </div>
+    <div class="col-md-2">
+      <div class="padding"><%= l @game.created_at%></div>
+      <div class="padding">金額￥<%= @game.price %></div>
+      <div class="padding">
+        <%= form_with model: @bookmark, url: create_bookmark_path(@game.id) do |f| %>
+          <%= f.submit "ブックマーク", class:'btn btn-primary' %>
+        <% end %>
+      </div>
+      <div class="col-md-6"></div>
     </div>
   </div>
   <div class="row">
-    <div class="col">
+    <div class="col-md-4 text dotted">
+      <%= @game.introduction %>
+    </div>
+    <div class="col-md-8"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 border">
       <h3>レビュー投稿欄</h3>
     </div>
+    <duv class="col-md-10"></duv>
   </div>
   <div class="row">
     <div class="col-md-12">
@@ -60,7 +63,7 @@
   </div>
   <!--game/reviews#index-->
   <% @reviews.each do |review| %>
-    <div class="row">
+    <div class="row sand">
       <div class="col-md-12">
         <%= review.user.name %>のレビュー
       </div>

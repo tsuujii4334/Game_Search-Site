@@ -1,48 +1,52 @@
-<div class="container px-5,py-10 text">
+<div class="container px-5,py-10">
   <%= form_with model: @user, url: new_user_session_path do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3 bg-white">
       <h3>ログイン</h3>
       <p>会員の方はこちらからログイン</p>
     </div>
+    <div class="col-md-3 bg-white"></div>
+    <div class="col-md-6"></div>
   </div>
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3 bg-white">
       <p>メールアドレス</p>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3 bg-white">
       <div class="field">
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
     </div>
+    <div class="col-md-6"></div>
   </div>
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3 bg-white">
       <p>パスワード</p>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3 bg-white">
       <div class="field">
         <%= f.password_field :password, autofocus: true, autocomplete: "current-passwoed" %>
       </div>
     </div>
+    <div class="col-md-6"></div>
   </div>
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3 bg-white">
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3 bg-white">
       <div class="actions">
         <%= f.submit "ログイン", class:'btn btn-success' %>
       </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-6">
     </div>
   </div>
   <% end %>
   <div class="row">
     <div class="col-md-6">
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 bg-white">
       <h5>会員登録がお済でない方</h5>
       <p><%= link_to "こちら", new_user_registration_path %>から新規登録を行ってください。</p>
     </div>

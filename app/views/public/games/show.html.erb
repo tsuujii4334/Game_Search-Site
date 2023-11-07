@@ -4,20 +4,21 @@
 <div class="contaier px-5">
   <!--games#show-->
   <div class="row">
-    <div class="col">
+    <div class="col-md-3 bg-white">
       <div class="game-title">
         <%= @game.name %>
       </div>
     </div>
+    <div class="col-md-6"></div>
   </div>
-  <div class="row">
-    <div class="col-md-3">
+  <div class="row bg-white">
+    <div class="col-md-6">
       <%= image_tag @game.get_profile_image(200,200) %>
     </div>
     <div class="col-md-1 genre down">
       <%= @game.genre.genre_name %>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-4">
       <div class="padding"><%= l @game.created_at%></div>
       <div class="padding">金額￥<%= @game.price %></div>
       <div class="padding">
@@ -25,41 +26,47 @@
           <%= f.submit "ブックマーク", class:'btn btn-primary' %>
         <% end %>
       </div>
-      <div class="col-md-6"></div>
+      <div class="col-md-1"></div>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-4 text dotted">
+    <div class="col-md-4 text dotted bg-white">
       <%= @game.introduction %>
     </div>
     <div class="col-md-8"></div>
   </div>
+  <div class="bg-gray"></div>
   <div class="row">
-    <div class="col-md-2 border">
+    <div class="col-md-2 border bg-white">
       <h3>レビュー投稿欄</h3>
     </div>
     <duv class="col-md-10"></duv>
   </div>
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-2 bg-white">
       <h5><%= @current_user.name %>のレビューを書く</h5>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-10"></div>
+    <div class="col-md-3 bg-white">
       <%= image_tag current_user.get_profile_avatar(100,100) %>
     </div>
     <%= form_with model: @review, url: create_review_path(@game.id) do |f| %>
-    <div class="col-md-7 text_area">
+    <div class="col-md-12 bg-white">
       <%= f.text_area :review_writing, autofocus: true %>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-12 bg-white">
       <%= f.submit "レビューを投稿する", class:'btn btn-primary' %>
     </div>
     <% end %>
   </div>
+  <div class="row bg-gray">
+    <div class="col"></div>
+  </div>
   <div class="row">
-    <div class="col">
+    <div class="col-md-1 bg-white">
       <h5>レビュー一覧</h5>
     </div>
+    <div class="col-md-11"></div>
   </div>
   <!--game/reviews#index-->
   <% @reviews.each do |review| %>

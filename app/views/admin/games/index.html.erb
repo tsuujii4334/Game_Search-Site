@@ -1,11 +1,11 @@
-<div class ="container px-4">
+<div class ="container px-4 bg-white">
   <div class="row">
     <div class="col">
      <span>ゲーム一覧</span>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-5">
       <h4>絞り込み</h4><span>(全<%= @gamecount%>件)</span>
       <p>金額</p>
       <div><%= link_to "無料", admin_games_path(price: 0), :class => "custom-button" %></div>
@@ -15,7 +15,7 @@
       <div><%= link_to "5001円~", admin_games_path(price: 5001..), :class => "custom-button" %></div>
       <div><%= link_to "ゲーム新規登録", admin_games_new_path, :class => "custom-button" %></div>
     </div>
-    <div class="col-md-8 scroll">
+    <div class="col-md-7 scroll">
     <% @games.each do |game| %>
       <div class="row">
         <div class="col-md-3">

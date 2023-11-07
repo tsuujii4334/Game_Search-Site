@@ -1,23 +1,25 @@
-<div>
+<div class="bg-white">
   <%= flash[:notice] %>
 </div>
 <div class ="container px-4">
   <div class="row">
-    <div class="col">
+    <div class="col-md-6 bg-white">
      <h3>ジャンル一覧・追加</h3>
-    </div> 
+    </div>
+    <div class="col-md-6"></div>
   </div>
   <div class="row">
-    <div class="col">
+    <div class="col-md-6 bg-white">
     <%= form_with model: @genre, url: admin_genres_create_path do |f| %>
       <span>ジャンル名</span>
       <%= f.text_field :genre_name, autofocus: true %>
       <%= f.submit "新規登録", class:'btn btn-success' %>
     <% end %>
     </div>
+    <div class="col-md-6"></div>
   </div>
   <div class="row">
-    <div class="col">
+    <div class="col-md-6 bg-white">
       <table>
         <thead>
           <tr>
@@ -41,5 +43,6 @@
         </tbody>
       </table>
     </div>
+    <div class="col-md-6"></div>
   </div>
 </div>

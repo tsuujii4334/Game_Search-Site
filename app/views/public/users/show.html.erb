@@ -15,7 +15,7 @@
         </tr>
         <tr>
           <td>
-            <%= link_to "編集する", edit_user_path , :class => "btn btn-success ms-3" %>
+            <%= link_to "編集する", edit_user_path(@user.id), :class => "btn btn-success ms-3" %>
           </td>
           <td>
             <%= link_to "ブックマーク一覧へ", index_bookmark_path(@user.id), :class => "btn btn-primary ms-3" %>

@@ -1,11 +1,11 @@
 <div class="contaier">
  <div class="row">
-  <div class="col-md-4 offset-md-1">
+  <div class="col-md-4 offset-md-1 bg-white">
     <h2>
       ユーザー情報編集
     </h2>
       <table class="table table-hover table-inverse">
-        <%= form_with model: @user, url: update_user_path do |f| %>
+        <%= form_with model: @user, url: update_user_path(@user.id) do |f| %>
         <tr>
           <th>プロフィール画像</th>
           <td>
@@ -31,7 +31,7 @@
         <% end %>
       </table>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 bg-white">
       <div>
         <h4>
           プロフィール画像

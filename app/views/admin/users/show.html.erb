@@ -1,6 +1,6 @@
 <div class="contaier">
  <div class="row">
-  <div class="col-md-4 offset-md-1">
+  <div class="col-md-4 offset-md-1 bg-white">
    <!--customerindexの記述-->
     <h2>
       <%= @user.name %>さんの会員情報
@@ -23,7 +23,7 @@
           <th>会員ステータス</th>
           <td>
             <span>
-            <%= f.radio_button :is_deleted, :false %>
+            <%= f.radio_button :is_deleted, :false %><!--会員ステータスが更新できない-->
             <%= f.label :is_deleted, "登録中" %>
             </span>
             <span>
@@ -41,7 +41,7 @@
         <% end %>
       </table>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 bg-white">
       <div>
         <h4>
           プロフィール画像

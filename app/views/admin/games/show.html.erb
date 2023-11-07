@@ -1,7 +1,7 @@
-<div>
+<div class="bg-white">
   <%= flash[:notice] %>
 </div>
-<div class="contaier px-5">
+<div class="contaier px-5 bg-white">
   <!--games#show-->
   <div class="row">
     <div class="col">
@@ -14,10 +14,10 @@
     <div class="col-md-6">
       <%= image_tag @game.get_profile_image(200,200) %>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-1 genre">
       <%= @game.genre.genre_name %>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-5">
       <div><%= l @game.created_at%></div>
       <div>金額￥<%= @game.price %></div>
       <div><%= link_to "編集する", admin_edit_game_path(@game.id), :class => "btn btn-success" %></div>

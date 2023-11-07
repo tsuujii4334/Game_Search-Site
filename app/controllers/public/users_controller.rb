@@ -6,21 +6,13 @@ class Public::UsersController < ApplicationController
 
   def edit
     @user = current_user
-    if @user.id == current_user.id
-      redirect_to edit_user_path
-    else
-      redirect_to root_path
-    end
   end
   
   def update
+    is_matching_login_user
     @user = current_user
-    if @user.id == current_user.id
-      @user.update(user_params)
-      redirect_to mypage_user_path
-    else
-      render :edit
-    end
+    @user.update(user_params)
+    redirect_to mypage_user_path
   end
 
   def confirm
@@ -34,8 +26,16 @@ class Public::UsersController < ApplicationController
     redirect_to root_path
   end
   
+private
   def user_params
     params.require(:user).permit(:avatar, :name, :email)
+  end
+
+  def is_matching_login_user
+    @user = User.find(params[:id])
+    unless @user.id == current_user.id
+      redirect_to root_path
+    end
   end
   
 end

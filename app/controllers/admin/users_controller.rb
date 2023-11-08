@@ -10,9 +10,16 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-       redirect_to admin_users_path
+      if params[:user][:is_deleted] == "false"
+        @user.update_attribute(:is_deleted, false)  # 退会状態から登録中状態に更新
+        flash[:success] = "会員ステータスを登録中に変更しました。"
+      elsif params[:user][:is_deleted] == "true"
+        @user.update_attribute(:is_deleted, true)   # 登録中状態から退会状態に更新
+        flash[:success] = "会員ステータスを退会に変更しました。"
+      end
+      redirect_to admin_users_path
     else
-       render :show
+      render :show
     end
   end
   

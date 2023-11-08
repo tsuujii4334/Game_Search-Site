@@ -4,21 +4,20 @@
 <div class="contaier px-5">
   <!--games#show-->
   <div class="row">
-    <div class="col-md-3 bg-white">
+    <div class="col bg-white">
       <div class="game-title">
         <%= @game.name %>
       </div>
     </div>
-    <div class="col-md-6"></div>
   </div>
   <div class="row bg-white">
-    <div class="col-md-6">
+    <div class="col-md-6 bg-white">
       <%= image_tag @game.get_profile_image(200,200) %>
     </div>
-    <div class="col-md-1 genre down">
+    <div class="col-md-1 down genre">
       <%= @game.genre.genre_name %>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-2 bg-white">
       <div class="padding"><%= l @game.created_at%></div>
       <div class="padding">金額￥<%= @game.price %></div>
       <div class="padding">
@@ -26,7 +25,7 @@
           <%= f.submit "ブックマーク", class:'btn btn-primary' %>
         <% end %>
       </div>
-      <div class="col-md-1"></div>
+      <div class="col-md-3"></div>
     </div>
   </div>
   <div class="row">

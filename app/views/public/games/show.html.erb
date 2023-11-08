@@ -1,7 +1,7 @@
 <div class="bg-white">
   <%= flash[:notice] %> <!--ログインのフラッシュメッセージがたまに表示される-->
 </div>
-<div class="contaier px-5">
+<div class="contaier px-5 bg-white">
   <!--games#show-->
   <div class="row">
     <div class="col bg-white">
@@ -34,7 +34,6 @@
     </div>
     <div class="col-md-8"></div>
   </div>
-  <div class="bg-gray"></div>
   <div class="row">
     <div class="col-md-2 border bg-white">
       <h3>レビュー投稿欄</h3>
@@ -57,9 +56,6 @@
       <%= f.submit "レビューを投稿する", class:'btn btn-primary' %>
     </div>
     <% end %>
-  </div>
-  <div class="row bg-gray">
-    <div class="col"></div>
   </div>
   <div class="row">
     <div class="col-md-1 bg-white">

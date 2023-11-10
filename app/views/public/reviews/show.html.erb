@@ -1,4 +1,4 @@
-<div class="contaier px-5">
+<div class="contaier px-5 bg-white">
   <!--reviews#show-->
   <div class="row">
     <div class="col-md-6 bg-white">
@@ -34,12 +34,12 @@
       <% end %>
     </div>
   </div>
-  <div class="row bg-gray"></div>
+  <div class="row line"></div>
   <div class="row">
     <!--comment#index-->
     <div class="col-md-7 review_column">
     <% @comments.each do |comment| %>
-          <div class="row bg-gray"></div>
+          <div class="row sand"></div>
           <div class="row">
             <div class="col-md-3 bg-white">
               <%= image_tag comment.user.get_profile_avatar(50,50) %>

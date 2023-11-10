@@ -1,12 +1,22 @@
 class Admin::GenresController < ApplicationController
-  
+
   def create
     @genre = Genre.new(genre_params)
-    if @genre.save
+    @genres = Genre.all
+    already_genre = @genres.any?
+    if already_genre
+      if @genres.exists?(genre_name: @genre.genre_name)
+        flash[:notice] = "すでにジャンル登録しています。"
+        redirect_to admin_genres_path
+      else
+        @genre.save!
+        flash[:notice] = "ジャンル作成に成功しました。"
+        redirect_to admin_genres_path
+      end
+    else
+      @genre.save!
       flash[:notice] = "ジャンル作成に成功しました。"
       redirect_to admin_genres_path
-    else
-      render :index
     end
   end
 

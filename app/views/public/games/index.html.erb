@@ -3,7 +3,7 @@
     <div class="col-md-2">
      <h3 class="bg-white">ゲーム一覧</h3>
     </div>
-    <div class="md-10"></div>
+    <div class="col-md-10"></div>
   </div>
   <div class="row">
     <div class="col-md-4">
@@ -20,8 +20,12 @@
     <% @games.each do |game| %>
     <div class="row sand">
       <div class="col-md-3">
-        <%= link_to show_game_path(game.id) do %>
-          <div><%= image_tag game.get_profile_image(100,100) %></div>
+        <% if user_signed_in? %> 
+          <%= link_to show_game_path(game.id) do %>
+            <div><%= image_tag game.get_profile_image(100,100) %></div>
+          <% end %>
+        <% else %>
+            <div><%= image_tag game.get_profile_image(100,100) %></div>
         <% end %>
       </div>
       <div class="col-md-3">

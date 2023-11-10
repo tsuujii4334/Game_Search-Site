@@ -13,7 +13,7 @@
       <div><%= link_to "501~2,000円", admin_games_path(price:501..2000), :class => "custom-button" %></div>
       <div><%= link_to "2,001~5,000円", admin_games_path(price:2001..5000), :class => "custom-button" %></div>
       <div><%= link_to "5001円~", admin_games_path(price: 5001..), :class => "custom-button" %></div>
-      <div><%= link_to "ゲーム新規登録", admin_games_new_path, :class => "custom-button" %></div>
+      <div><%= link_to "新規登録", admin_games_new_path, :class => "custom-button-green" %></div>
     </div>
     <div class="col-md-7 scroll">
     <% @games.each do |game| %>

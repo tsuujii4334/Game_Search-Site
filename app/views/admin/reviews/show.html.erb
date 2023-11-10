@@ -41,21 +41,21 @@
     <!--comment#index-->
     <div class="col-md-8 review_column">
     <% @comments.each do |comment| %>
-          <div class="row">
-            <div class="col-md-3">
-              <%= image_tag comment.user.get_profile_avatar(50,50) %>
-            </div>
-            <div class="col-md-6">
-              <div>
-                <p><%= comment.user.name %> のコメント</p>
-              </div>
-                <p><%= comment.comment_writing %></p>
-            </div>
-            <div class="col-md-3">
-              <div><%= comment.created_at %></div>
-              <%= link_to "コメントの削除", admin_destroy_comment_path(comment.id), method: :delete, :class => "btn btn-success" %>
-            </div>
+      <div class="row">
+        <div class="col-md-3">
+          <%= image_tag comment.user.get_profile_avatar(50,50) %>
+        </div>
+        <div class="col-md-6">
+          <div>
+            <p><%= comment.user.name %> のコメント</p>
           </div>
+            <p><%= comment.comment_writing %></p>
+        </div>
+        <div class="col-md-3">
+          <div><%= comment.created_at %></div>
+          <%= link_to "コメントの削除", admin_destroy_comment_path(comment.id), method: :delete, :class => "btn btn-success" %>
+        </div>
+      </div>
     <% end %>
     </div>
   </div>

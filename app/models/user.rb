@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one_attached :profile_avatar
   
   has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_games, through: :bookmarks, source: :game
   has_many :comments, dependent: :destroy
   has_many :reviews, dependent: :destroy
   

@@ -20,16 +20,16 @@
     <% @games.each do |game| %>
     <div class="row sand">
       <div class="col-md-3">
-        <% if user_signed_in? %> 
-          <%= link_to show_game_path(game.id) do %>
-            <div><%= image_tag game.get_profile_image(100,100) %></div>
-          <% end %>
-        <% else %>
-            <div><%= image_tag game.get_profile_image(100,100) %></div>
-        <% end %>
+        <div><%= image_tag game.get_profile_image(100,100) %></div>
       </div>
       <div class="col-md-3">
-        <div><%= game.name %></div>
+          <% if user_signed_in? %> 
+            <%= link_to show_game_path(game.id) do %>
+              <div><%= game.name %></div>
+            <% end %>
+          <% else %>
+              <div><%= game.name %></div>
+          <% end %>
         <div class="genre"><%= game.genre.genre_name %></div>
       </div>
       <div class="col-md-4">

@@ -19,13 +19,17 @@
     <% @games.each do |game| %>
       <div class="row sand">
         <div class="col-md-3">
-          <%= link_to admin_show_game_path(game.id) do %>
-            <div><%= image_tag game.get_profile_image(100,100) %></div>
-          <% end %>
+          <div><%= image_tag game.get_profile_image(100,100) %></div>
         </div>
         <div class="col-md-5">
-          <div><%= game.name %></div>
-          <div class="col-md-8 genre"><%= game.genre.genre_name %></div>
+          <div>
+            <%= link_to admin_show_game_path(game.id) do %>
+              <%= game.name %>
+            <% end %>
+          </div>
+          <div class="col-md-8 genre">
+            <%= game.genre.genre_name %>
+          </div>
           <div class="col-md-4"></div>
         </div>
         <div class="col-md-4">

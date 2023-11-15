@@ -2,10 +2,10 @@
   <%= form_with model: @game, url: admin_update_game_path(@game.id) do |f| %>
   <div class="row">
     <div class="col-md-8">
-      <h3>ゲーム編集</h3>
+      <h3>ゲーム情報編集</h3>
     </div>
     <dic class="col-md-4">
-      <%= link_to "ゲーム情報の削除", admin_destroy_game_path(@game.id), method: :delete, :class => "btn btn-danger" %>
+      <%= link_to "ゲーム情報の削除", admin_destroy_game_path(@game.id), method: :delete, :class => "btn btn-danger", data: { confirm: "本当に削除しますか？" } %>
     </dic>
   </div>
   <div class="row">

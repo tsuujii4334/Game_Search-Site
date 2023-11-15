@@ -21,7 +21,7 @@
         <tbody>
           <% @games.each do |game| %>
             <tr>
-              <td><%= image_tag game.get_profile_image(50, 50) %></td>
+              <td><%= image_tag game.get_profile_image(100, 100) %></td>
               <td>
                 <%= link_to show_game_path(game.id) do %>
                   <%= game.name %>

@@ -36,7 +36,7 @@ end
     get 'users/edit' => 'users#edit', as: 'edit_user'
     patch 'users/:id' => 'users#update', as: 'update_user'
     get 'users/confirm' => 'users#confirm'
-    patch 'users/withdrawal' => 'users#withdrawal'
+    patch 'users/withdrawal' => 'users/withdrawal'
     get '/' => 'homes#top'
     get "search" => "searches#search"
     get 'searches/index'

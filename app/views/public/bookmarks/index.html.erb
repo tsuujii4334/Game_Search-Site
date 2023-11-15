@@ -22,12 +22,16 @@
         <% game = data[:game] %>
         <div class="row sand">
           <div class="col-md-3">
-            <%= link_to show_game_path(game.id) do %>
+            
               <div class="cur"><%= image_tag game.get_profile_image(100,100) %></div>
-            <% end %>
+            
           </div>
           <div class="col-md-3">
-            <div><%= game.name %></div>
+            <div>
+              <%= link_to show_game_path(game.id) do %>
+                <%= game.name %>
+              <% end %>
+            </div>
             <div class="genre"><%= game.genre.genre_name %></div>
           </div>
           <div class="col-md-4">

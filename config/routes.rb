@@ -34,7 +34,7 @@ end
     get 'games/:game_id' => 'games#show', as: 'show_game'
     get 'users/mypage' => 'users#show', as: 'mypage_user'
     get 'users/edit' => 'users#edit', as: 'edit_user'
-    patch 'users/:id' => 'users#update', as: 'update_user'
+    patch 'users/update/:id' => 'users#update', as: 'update_user'#HTTPメソッドとURLが被るとルートが上から優先される(今回はupdate)ため、URLにupdateを追加して被らないようにした
     get 'users/confirm' => 'users#confirm'
     patch 'users/withdrawal' => 'users/withdrawal'
     get '/' => 'homes#top'

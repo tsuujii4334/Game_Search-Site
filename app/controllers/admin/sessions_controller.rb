@@ -17,6 +17,14 @@ class Admin::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
+  def admin_authentication
+    if params[:input_password] == ENV['ADMIN_PASSWORD']
+      after_sign_in_path
+    else
+      flash[:fail]="パスワードが違います"
+      render "new"
+    end
+  end
 
   protected
     def after_sign_in_path_for(resource)

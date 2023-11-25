@@ -18,10 +18,10 @@ class Admin::SessionsController < Devise::SessionsController
   #   super
   # end
   def admin_authentication
-    if params[:input_password] == ENV['ADMIN_PASSWORD']
+    if params[:input_password] == ENV['ADMIN_PASSWORD'] && params[:email] == ENV['ADMIN_EMAIL']
       after_sign_in_path
     else
-      flash[:fail]="パスワードが違います"
+      flash[:fail]="管理者ログイン情報が間違っています。"
       render "new"
     end
   end

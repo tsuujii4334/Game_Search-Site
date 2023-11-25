@@ -25,4 +25,4 @@ class Public::ReviewsController < ApplicationController
   end
 
 end
-#修正
+#修正test

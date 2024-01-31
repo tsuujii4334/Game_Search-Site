@@ -4,8 +4,11 @@ class Public::CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user = current_user
     @comment.review = @review
-    @comment.save!
-    redirect_to show_review_path(@comment.review.id)
+    if @comment.save
+      redirect_to show_review_path(@comment.review.id)
+    else
+      render :new
+    end
   end
 
   def destroy

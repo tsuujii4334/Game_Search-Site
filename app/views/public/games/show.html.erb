@@ -51,6 +51,16 @@
     <div class="col-md-3">
       <%= image_tag current_user.get_profile_avatar(100,100) %>
     </div>
+    
+    <% if @review.errors.any? %>
+      <%= @review.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @review.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    
     <%= form_with model: @review, url: create_review_path(@game.id) do |f| %>
     <div class="col-md-12">
       <%= f.text_area :review_writing, autofocus: true %>

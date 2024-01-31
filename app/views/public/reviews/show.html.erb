@@ -29,44 +29,54 @@
       <p>
         <%= l @review.created_at %>
       </p>
-      <% if @review.user == current_user %>
-        <%= link_to "レビューの削除", destroy_review_path(@review.id), method: :delete, :class => "btn btn-danger" %>
-      <% end %>
+        <% if @review.user == current_user %>
+          <%= link_to "レビューの削除", destroy_review_path(@review.id), method: :delete, :class => "btn btn-danger" %>
+        <% end %>
     </div>
   </div>
   <div class="row line"></div>
   <div class="row">
     <!--comment#index-->
     <div class="col-md-7 review_column">
-    <% @comments.each do |comment| %>
-          <div class="row sand"></div>
-          <div class="row">
-            <div class="col-md-3 bg-white">
-              <%= image_tag comment.user.get_profile_avatar(50,50) %>
-            </div>
-            <div class="col-md-6 bg-white">
-              <div>
-                <p><%= comment.user.name %> のコメント</p>
+      <% @comments.each do |comment| %>
+            <div class="row sand"></div>
+            <div class="row">
+              <div class="col-md-3 bg-white">
+                <%= image_tag comment.user.get_profile_avatar(50,50) %>
               </div>
-                <p><%= comment.comment_writing %></p>
+              <div class="col-md-6 bg-white">
+                <div>
+                  <p><%= comment.user.name %> のコメント</p>
+                </div>
+                  <p><%= comment.comment_writing %></p>
+              </div>
+              <div class="col-md-3 bg-white">
+                <div><%= l comment.created_at %></div>
+                <% if comment.user == current_user %>
+                  <%= link_to "コメントの削除", destroy_comment_path(comment.id), method: :delete, :class => "btn btn-success" %>
+                <% end %>
+              </div>
             </div>
-            <div class="col-md-3 bg-white">
-              <div><%= l comment.created_at %></div>
-              <% if comment.user == current_user %>
-                <%= link_to "コメントの削除", destroy_comment_path(comment.id), method: :delete, :class => "btn btn-success" %>
-              <% end %>
-            </div>
-          </div>
-    <% end %>
+      <% end %>
     </div>
     <div class="col-md-5">
+      
+      <% if @comment.errors.any? %>
+        <%= @comment.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @comment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      
       <%= form_with model: @comment, url: create_comment_path(@review.id) do |f| %>
-      <div>
-        <%= f.text_area :comment_writing, autofocus: true %>
-      </div>
-      <div>
-        <%= f.submit "コメントする", class:'btn btn-primary' %>
-      </div>
+        <div>
+          <%= f.text_area :comment_writing, autofocus: true %>
+        </div>
+        <div>
+          <%= f.submit "コメントする", class:'btn btn-primary' %>
+        </div>
       <% end %>
       <div>
         <%= link_to "ゲーム詳細ページに戻る", show_game_path(@review.game.id), :class => "btn btn-success" %>

@@ -9,8 +9,11 @@ class Public::ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user = current_user
     @review.game = Game.find(params[:game_id])
-    @review.save!
-    redirect_to show_game_path(@review.game.id)
+    if @review.save
+      redirect_to show_game_path(@review.game.id)
+    else
+      render :new
+    end
   end
 
   def destroy

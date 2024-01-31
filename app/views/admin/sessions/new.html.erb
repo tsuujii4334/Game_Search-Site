@@ -1,3 +1,6 @@
+<div class="bg-white">
+  <%= flash[:notice] %>
+</div>
 <div class="container px-5,py-10">
   <%= form_with model: @admin, url: new_admin_session_path do |f| %>
   <div class="row">

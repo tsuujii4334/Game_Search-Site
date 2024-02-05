@@ -17,15 +17,7 @@ class Admin::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
-  def admin_authentication
-    if params[:input_password] == ENV['ADMIN_PASSWORD'] && params[:email] == ENV['ADMIN_EMAIL']
-      after_sign_in_path
-    else
-      flash[:fail]="管理者ログイン情報が間違っています。"
-      render "new"
-    end
-  end
-
+  
   protected
     def after_sign_in_path_for(resource)
       admin_users_path

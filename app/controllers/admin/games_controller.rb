@@ -1,4 +1,6 @@
 class Admin::GamesController < ApplicationController
+  before_action :authenticate_admin!
+  
   def index
     @gamecount = Game.all.count
     @games = Game.all.filter_price(game_filter_params).page(params[:page]).per(8)
@@ -47,6 +49,14 @@ class Admin::GamesController < ApplicationController
   end
 
   private
+  
+  def authenticate_admin!
+    unless current_user.admin?
+      flash[:alert] = "管理者権限が必要です。"
+      redirect_to root_path # 管理者以外はトップページにリダイレクト
+    end
+  end
+  
   def game_params
     params.require(:game).permit(:profile_image,:name,:introduction,:price,:genre_id)
   end
